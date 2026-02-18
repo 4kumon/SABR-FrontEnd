@@ -16,11 +16,11 @@ https://github.com/akveo/nebular
 Dependências:
 
 -   Git: versão mais atual.
--   Node.js: **v20.18.1** (via NVM).
+-   Node.js: **v18.20.0** (via NVM) - **OBRIGATÓRIO para Angular 15.2.x**.
 -   Angular: **15.2.10**.
 
-> Nota: o `package.json` do ngx-admin referencia Angular `^15.2.10` e
-> Nebular `11.0.1`.
+> ⚠️ **IMPORTANTE**: Para Angular 15.2.x, use **Node 18** (>= 18.10.0). Node 20+ não é compatível com todas as dependências deste projeto.
+> O `package.json` do ngx-admin referencia Angular `^15.2.10` e Nebular `11.0.1`.
 
 ------------------------------------------------------------------------
 
@@ -80,13 +80,13 @@ Procure por `nvm-setup.exe`.
 Instalar uma versão específica:
 
 ``` bash
-nvm install 20.18.1
+nvm install 18.20.0
 ```
 
 Usar (ativar) a versão instalada:
 
 ``` bash
-nvm use 20.18.1
+nvm use 18.20.0
 ```
 
 Listar versões instaladas:
@@ -131,10 +131,10 @@ node -v
 npm -v
 ```
 
-Se não estiver em **v20.18.1**, rode:
+Se não estiver em **v18.20.0**, rode:
 
 ``` bash
-nvm use 20.18.1
+nvm use 18.20.0
 ```
 
 ------------------------------------------------------------------------
@@ -177,3 +177,68 @@ Administrador.
 
 **Alertas de vulnerabilidade:** - Tratar como item de manutenção. -
 Avaliar antes de rodar `npm audit fix` automaticamente.
+
+------------------------------------------------------------------------
+
+### 5.3 Problema: node-sass + Python (ENOENT / EPERM)
+
+**Sintomas:**
+- Erro `npm error path node_modules\node-sass`
+- Erro `gyp ERR! python2 Error: not found`
+- Erro `SyntaxError: Missing parentheses in call to 'print'`
+- Erros `EPERM: operation not permitted` ao tentar instalar
+
+**Causa:** O pacote `node-sass` é incompatível com Node.js 18+ e requer Python 2.
+
+**Solução - Substituir node-sass por sass (Dart Sass):**
+
+1. Edite o arquivo `package.json` e substitua:
+```json
+"node-sass": "^4.14.1"
+```
+Por:
+```json
+"sass": "^1.69.0"
+```
+
+2. Limpe a instalação anterior:
+``` bash
+# Feche IDEs e terminais que possam estar usando arquivos do projeto
+Remove-Item -Recurse -Force node_modules
+Remove-Item -Force package-lock.json
+
+# Limpe o cache do npm
+npm cache clean --force
+```
+
+3. Reinstale as dependências:
+``` bash
+npm install --legacy-peer-deps
+```
+
+------------------------------------------------------------------------
+
+### 5.5 Problema: @types/ws (TypeScript não é genérico)
+
+**Sintomas:**
+- Erro `Error: node_modules/@types/ws/index.d.ts:334:18 - error TS2315: Type 'Server' is not generic.`
+
+**Causa:** Versão do `@types/ws` incompatível com TypeScript 4.9.5.
+
+**Solução:**
+``` bash
+npm install @types/ws@8.5.4 --legacy-peer-deps
+```
+
+------------------------------------------------------------------------
+
+### 5.6 Verificar versão do Node
+
+Sempre verifique a versão do Node antes de instalar:
+
+``` bash
+node -v
+npm -v
+```
+
+A versão deve ser **18.x** (ex: v18.20.0). Se aparecer 20.x, use `nvm use 18.20.0` para trocar.
