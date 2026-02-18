@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NbToastrService } from '@nebular/theme';
 
 interface Usuario {
@@ -16,7 +16,7 @@ interface Usuario {
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })
-export class UsuariosComponent implements OnInit {
+export class UsuariosComponent {
   
   usuarios: Usuario[] = [
     { id: 1, nome: 'João Silva', email: 'joao@email.com', cpf: '123.456.789-00', telefone: '(11) 99999-9999', status: 'ativo', perfil: 'Admin' },
@@ -38,9 +38,6 @@ export class UsuariosComponent implements OnInit {
   };
 
   constructor(private toastrService: NbToastrService) {}
-
-  ngOnInit(): void {
-  }
 
   novoUsuario(): void {
     this.usuarioSelecionado = null;
