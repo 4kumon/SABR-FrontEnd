@@ -24,6 +24,11 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
+      path: 'cadastro',
+      loadChildren: () => import('./cadastro/cadastro.module')
+        .then(m => m.CadastroModule),
+    },
+    {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),

@@ -23,8 +23,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Canais',
         icon: 'radio-outline',
-        link: '/pages/layout/accordion',
+        link: '/pages/cadastro/canais',
       },
+      {
+        title: 'Clientes',
+        icon: 'people-outline',
+        link: '/pages/cadastro/cliente',
+    },
       {
         title: 'Integrações',
         icon: 'globe-outline',
@@ -39,11 +44,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Usuários',
         icon: 'person-outline',
         link: '/pages/layout/cadastro/usuarios',
-      },
-     {
-        title: 'Vendedores',
-        icon: 'people-outline',
-        link: '/pages/layout/stepper',
       },
     ],
   },

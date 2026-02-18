@@ -1,0 +1,17 @@
+<nb-card>
+  <nb-card-header>
+    Confirmar exclusão
+    <button nbButton ghost status="danger" size="medium" (click)="cancelar()" style="float: right; margin-top: -5px;" type="button" tabindex="-1">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+
+  <nb-card-body>
+    <p>Tem certeza que deseja excluir o cliente <strong>{{ clienteNome }}</strong>?</p>
+    <p>Esta ação não pode ser desfeita.</p>
+  </nb-card-body>
+
+  <nb-card-footer style="display: flex; justify-content: center;">
+    <button nbButton status="danger" (click)="confirmar()">Excluir</button>
+  </nb-card-footer>
+</nb-card>

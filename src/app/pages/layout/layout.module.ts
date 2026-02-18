@@ -8,7 +8,10 @@ import {
   NbRouteTabsetModule,
   NbStepperModule,
   NbTabsetModule, NbUserModule, NbIconModule, NbSelectModule, NbTagModule,
+  NbInputModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { LayoutRoutingModule } from './layout-routing.module';
@@ -39,6 +42,9 @@ import { UsuariosComponent } from './cadastro/usuarios/usuarios.component';
     NbIconModule,
     NbSelectModule,
     NbTagModule,
+    NbInputModule,
+    NbSpinnerModule,
+    Ng2SmartTableModule,
     LayoutRoutingModule,
   ],
   declarations: [
