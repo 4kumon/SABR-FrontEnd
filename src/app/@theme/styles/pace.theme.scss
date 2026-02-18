@@ -7,11 +7,11 @@
  @mixin ngx-pace-theme() {
 
   .pace .pace-progress {
-    background: nb-theme(color-primary-default);
+    background: #ffbb0f;;
   }
 
   .pace .pace-progress-inner {
-    box-shadow: 0 0 10px nb-theme(color-primary-default), 0 0 5px nb-theme(color-primary-default);
+    box-shadow: 0 0 10px #ffbb0f, 0 0 5px #ffbb0f;
   }
 
   .pace .pace-activity {

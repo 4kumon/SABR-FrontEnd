@@ -80,14 +80,13 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.hideGrid = this.themeService.currentTheme === 'corporate';
+    this.hideGrid = false;
 
     this.themeService.onThemeChange()
       .pipe(
-        map(({ name }) => name === 'corporate'),
         takeUntil(this.destroy$),
       )
-      .subscribe((hideGrid: boolean) => this.hideGrid = hideGrid);
+      .subscribe(() => this.hideGrid = false);
   }
 
   ngOnDestroy() {

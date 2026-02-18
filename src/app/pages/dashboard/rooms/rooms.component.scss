@@ -8,10 +8,6 @@
     border-right: nb-theme(divider-width) nb-theme(divider-style) nb-theme(divider-color);
     background: url('../../../../assets/images/square_pattern.svg') repeat;
     background-size: 75px;
-
-    &.dark-background {
-      background-image: url('../../../../assets/images/square_pattern_cosmic.svg');
-    }
   }
 
   ngx-player {
