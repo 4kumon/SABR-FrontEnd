@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-12">
+    <nb-card>
+      <nb-card-header>
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Cadastro de Usuários</span>
+          <button nbButton status="primary" (click)="novoUsuario()" *ngIf="!modoEdicao">
+            <nb-icon icon="plus-outline"></nb-icon>
+            Novo Usuário
+          </button>
+        </div>
+      </nb-card-header>
+
+      <nb-card-body>
+        <!-- Formulário de Edição/Criação -->
+        <div *ngIf="modoEdicao" class="mb-4">
+          <nb-card>
+            <nb-card-header>{{ usuarioSelecionado ? 'Editar Usuário' : 'Novo Usuário' }}</nb-card-header>
+            <nb-card-body>
+              <form (ngSubmit)="salvarUsuario()">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="label">Nome *</label>
+                    <input nbInput fullWidth [(ngModel)]="form.nome" name="nome" placeholder="Digite o nome" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="label">Email *</label>
+                    <input nbInput fullWidth [(ngModel)]="form.email" name="email" placeholder="Digite o email" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="label">CPF *</label>
+                    <input nbInput fullWidth [(ngModel)]="form.cpf" name="cpf" placeholder="000.000.000-00" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="label">Telefone</label>
+                    <input nbInput fullWidth [(ngModel)]="form.telefone" name="telefone" placeholder="(00) 00000-0000">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="label">Perfil</label>
+                    <nb-select fullWidth [(ngModel)]="form.perfil" name="perfil">
+                      <nb-option *ngFor="let perfil of getPerfis()" [value]="perfil">{{ perfil }}</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="label">Status</label>
+                    <nb-select fullWidth [(ngModel)]="form.status" name="status">
+                      <nb-option value="ativo">Ativo</nb-option>
+                      <nb-option value="inativo">Inativo</nb-option>
+                    </nb-select>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button nbButton status="success" type="submit">
+                    <nb-icon icon="checkmark-outline"></nb-icon>
+                    Salvar
+                  </button>
+                  <button nbButton status="basic" type="button" (click)="cancelar()">
+                    <nb-icon icon="close-outline"></nb-icon>
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </nb-card-body>
+          </nb-card>
+        </div>
+
+        <!-- Tabela de Usuários -->
+        <div *ngIf="!modoEdicao">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Perfil</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.cpf }}</td>
+                <td>{{ usuario.telefone }}</td>
+                <td>{{ usuario.perfil }}</td>
+                <td>
+                  <nb-tag [text]="usuario.status" [status]="usuario.status === 'ativo' ? 'success' : 'danger'" appearance="filled"></nb-tag>
+                </td>
+                <td>
+                  <button nbButton size="small" status="info" (click)="editarUsuario(usuario)" class="mr-2">
+                    <nb-icon icon="edit-outline"></nb-icon>
+                  </button>
+                  <button nbButton size="small" status="danger" (click)="excluirUsuario(usuario)">
+                    <nb-icon icon="trash-2-outline"></nb-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div *ngIf="usuarios.length === 0" class="text-center py-5">
+            <nb-icon icon="person-outline" size="giant" status="basic"></nb-icon>
+            <p class="mt-3">Nenhum usuário cadastrado</p>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -4,6 +4,17 @@
 @import '@nebular/theme/styles/themes';
 
 $nb-themes: nb-register-theme((
+  color-primary-500: #ffb805,
+  color-primary-400: #ffb805,
+  color-primary-300: #ffb805,
+  color-primary-600: #ffb805,
+  color-primary-700: #ffb805,
+  color-primary-800: #ffb805,
+  color-primary-hover: #e6a400,
+  color-primary-focus: #e6a400,
+  color-primary-active: #ffb805,
+  color-primary-disabled: #ffb805,
+
   layout-padding-top: 2.25rem,
 
   menu-item-icon-margin: 0 0.5rem 0 0,

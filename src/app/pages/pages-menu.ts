@@ -17,6 +17,75 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Cadastros',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Canais',
+        icon: 'radio-outline',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Integrações',
+        icon: 'globe-outline',
+        link: '/pages/layout/accordion',
+      },
+      {
+        title: 'Produtos',
+        icon: 'shopping-bag-outline',
+        link: '/pages/layout/infinite-list',
+      },
+      {
+        title: 'Usuários',
+        icon: 'person-outline',
+        link: '/pages/layout/cadastro/usuarios',
+      },
+     {
+        title: 'Vendedores',
+        icon: 'people-outline',
+        link: '/pages/layout/stepper',
+      },
+    ],
+  },
+  {
+    title: 'Financeiro',
+    icon: 'credit-card-outline',
+    children: [
+      {
+        title: 'Solicitações de Recarga',
+        icon: 'pantone-outline',
+        link: '/pages/layout/stepper',
+      },
+    ],
+  },
+  {
+    title: 'Pedidos',
+    icon: 'file-text-outline',
+    children: [
+      {
+        title: 'Integrado',
+        icon: 'cast-outline',
+        link: '/pages/layout/stepper',
+      },
+    ],
+  },
+  {
+    title: 'Direito de Acesso',
+    icon: 'eye-outline',
+    children: [
+      {
+        title: 'Grupos',
+        icon: 'pie-chart-outline',
+        link: '/pages/layout/stepper',
+      },
+      {
+        title: 'Funcionalidades',
+        icon: 'sun-outline',
+        link: '/pages/layout/list',
+      },
+    ],
+  },
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
