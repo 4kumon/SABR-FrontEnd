@@ -1,11 +1,38 @@
 @import './themes';
 
 @mixin nb-overrides() {
-  nb-select.size-medium button {
-    padding: 0.4375rem 2.2rem 0.4375rem 1.125rem !important;
+    nb-select.size-medium button {
+        padding: 0.4375rem 2.2rem 0.4375rem 1.125rem !important;
 
-    nb-icon {
-      right: 0.41rem !important;
+        nb-icon {
+            right: 0.41rem !important;
+        }
     }
-  }
+
+    // Smart-table pagination
+    .pagination {
+        display: inline-flex !important;
+        margin-bottom: 0;
+    }
+
+    .page-link {
+        background-color: nb-theme(smart-table-header-bg);
+        border-color: nb-theme(smart-table-separator);
+        color: #ffbb0f !important;
+        text-decoration: none !important;
+    }
+
+    .page-item.active .page-link {
+        background-color: rgba(255, 187, 15, 0.12) !important;
+        border-color: #ffbb0f !important;
+        color: #ffbb0f !important;
+        font-weight: 700 !important;
+    }
+
+    .page-link:hover {
+        background-color: #ffbb0f !important;
+        border-color: #ffbb0f !important;
+        color: #ffffff !important;
+    }
+
 }
