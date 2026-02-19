@@ -1,15 +1,15 @@
 <nb-card>
-  <nb-card-header>
-    Clientes
-  </nb-card-header>
+    <nb-card-header class="card-header-actions">
+        <span>Clientes</span>
 
-  <nb-card-body>
-    <ng2-smart-table
-        [settings]="settings"
-        [source]="source"
-        (create)="onCreate($event)"
-        (edit)="onEdit($event)"
-        (delete)="onDelete($event)">
-    </ng2-smart-table>
-  </nb-card-body>
+        <button nbButton size="small" status="success" (click)="onCreate()">
+            <nb-icon icon="plus-outline"></nb-icon>
+            Novo
+        </button>
+    </nb-card-header>
+
+    <nb-card-body>
+        <ng2-smart-table class="app-smart-table" [settings]="settings" [source]="source" (edit)="onEdit($event)" (delete)="onDelete($event)">
+        </ng2-smart-table>
+    </nb-card-body>
 </nb-card>

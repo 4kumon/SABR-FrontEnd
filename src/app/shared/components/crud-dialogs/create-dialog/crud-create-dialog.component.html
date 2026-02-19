@@ -1,6 +1,6 @@
 <nb-card [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerMessage="Salvando...">
   <nb-card-header>
-    Novo cliente
+    {{ title }}
     <button nbButton ghost status="danger" size="medium" (click)="cancelar()" style="float: right; margin-top: -5px;" type="button" tabindex="-1">
       <nb-icon icon="close-outline"></nb-icon>
     </button>

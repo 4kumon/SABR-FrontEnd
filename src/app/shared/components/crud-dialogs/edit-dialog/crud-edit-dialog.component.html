@@ -1,0 +1,28 @@
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerMessage="Salvando...">
+  <nb-card-header>
+    {{ title }}
+    <button nbButton ghost status="danger" size="medium" (click)="cancelar()" style="float: right; margin-top: -5px;" type="button" tabindex="-1">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+
+  <nb-card-body>
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <label>Nome</label>
+      <input nbInput fullWidth placeholder="Nome" formControlName="name" />
+      <br /><br />
+      <label>Nome da loja</label>
+      <input nbInput fullWidth placeholder="Nome da loja" formControlName="store_name" />
+      <br /><br />
+      <label>E-mail</label>
+      <input nbInput fullWidth placeholder="E-mail" formControlName="email" />
+      <br /><br />
+      <label>Whatsapp</label>
+      <input nbInput fullWidth placeholder="Whatsapp" formControlName="whatsapp" />
+    </form>
+  </nb-card-body>
+
+  <nb-card-footer style="display: flex; justify-content: center;">
+    <button nbButton status="success" (click)="salvar()" [disabled]="loading" type="button">Atualizar</button>
+  </nb-card-footer>
+</nb-card>

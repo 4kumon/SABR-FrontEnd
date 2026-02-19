@@ -35,8 +35,183 @@
         color: #ffffff !important;
     }
 
+    ng2-smart-table ng2-smart-table-pager nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        // Setas de navegação desabilitadas (< > | << >>) - cinza claro
+        a.page-link-btn.disabled,
+        a.page-link-btn[disabled],
+        li.ng2-smart-page-item.disabled a,
+        li.ng2-smart-page-item.disabled a:hover {
+            background-color: #f5f5f5 !important;
+            color: #999 !important;
+            cursor: not-allowed !important;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        // Números das páginas desabilitados (apenas visual, não clicável)
+        a.ng2-smart-page-link.disabled,
+        a.ng2-smart-page-link[disabled] {
+            color: #999 !important;
+            cursor: not-allowed !important;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    }
+
+
+
+
     nb-sidebar nb-menu a.active {
         font-weight: 700 !important;
+    }
+
+    .card-header-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .app-smart-table thead th {
+        text-align: center !important;
+    }
+
+    .app-smart-table thead th ng2-smart-table-title,
+    .app-smart-table thead th ng2-smart-table-title a,
+    .app-smart-table thead th a {
+        color: #000 !important;
+        font-weight: 700 !important;
+    }
+
+    // Smart-table action buttons
+    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 0.375rem;
+        text-decoration: none !important;
+        color: #fff !important;
+    }
+
+    // edit
+    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-edit-edit {
+        background: nb-theme(color-warning-default) !important;
+        color: #fff !important;
+    }
+
+    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-edit-edit:hover {
+        background: nb-theme(color-warning-hover) !important;
+    }
+
+    // delete
+    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-delete-delete {
+        background: nb-theme(color-danger-default) !important;
+        color: #fff !important;
+    }
+
+    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-delete-delete:hover {
+        background: nb-theme(color-danger-hover) !important;
+    }
+
+    // Centraliza o conteúdo da coluna Actions (header e células)
+    ng2-smart-table th.ng2-smart-actions,
+    ng2-smart-table td.ng2-smart-actions {
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    // Faz os botões ficarem no centro (e com espaço entre eles)
+    ng2-smart-table td.ng2-smart-actions {
+        display: table-cell !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+
+    // item ativo do menu (inclui compactado)
+    nb-sidebar nb-menu a.active {
+        color: #ffbb0f !important;
+    }
+
+    // a “barra/indicador” do item ativo (o azul)
+    nb-sidebar nb-menu a.active::before {
+        background: #ffbb0f !important;
+    }
+
+
+    /* ==========================================================
+   1) Scrollbar NATIVO (Chrome/Edge/Safari + Firefox)
+   ========================================================== */
+
+    // Chrome / Edge / Safari - TODOS os scrollbars
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #fff7e2 !important;
+        border-radius: 4px;
+    }
+
+    // Hover apenas quando o mouse está SOBRE A BARRA
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: #ffbb0f !important;
+    }
+
+    // Firefox - usa @supports para não interferir no WebKit
+    @supports not selector(::-webkit-scrollbar) {
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #fff7e2 transparent;
+        }
+    }
+
+    /* ==========================================================
+   2) Perfect Scrollbar (ngx-perfect-scrollbar)
+   ========================================================== */
+
+    /* Força scrollbar do sidebar (Perfect Scrollbar) */
+    .nb-theme-default nb-sidebar .ps__thumb-y,
+    .nb-theme-default nb-sidebar .ps__thumb-x,
+    .nb-theme-corporate nb-sidebar .ps__thumb-y,
+    .nb-theme-corporate nb-sidebar .ps__thumb-x,
+    .nb-theme-dark nb-sidebar .ps__thumb-y,
+    .nb-theme-dark nb-sidebar .ps__thumb-x,
+    .nb-theme-cosmic nb-sidebar .ps__thumb-y,
+    .nb-theme-cosmic nb-sidebar .ps__thumb-x {
+        background-color: #fff7e2 !important;
+        transition: background-color 0.2s ease !important;
+    }
+
+    .nb-theme-default nb-sidebar .ps__rail-y:hover>.ps__thumb-y,
+    .nb-theme-default nb-sidebar .ps__thumb-y:hover,
+    .nb-theme-default nb-sidebar .ps__rail-y.ps--clicking .ps__thumb-y,
+    .nb-theme-corporate nb-sidebar .ps__rail-y:hover>.ps__thumb-y,
+    .nb-theme-corporate nb-sidebar .ps__thumb-y:hover,
+    .nb-theme-corporate nb-sidebar .ps__rail-y.ps--clicking .ps__thumb-y,
+    .nb-theme-dark nb-sidebar .ps__rail-y:hover>.ps__thumb-y,
+    .nb-theme-dark nb-sidebar .ps__thumb-y:hover,
+    .nb-theme-dark nb-sidebar .ps__rail-y.ps--clicking .ps__thumb-y,
+    .nb-theme-cosmic nb-sidebar .ps__rail-y:hover>.ps__thumb-y,
+    .nb-theme-cosmic nb-sidebar .ps__thumb-y:hover,
+    .nb-theme-cosmic nb-sidebar .ps__rail-y.ps--clicking .ps__thumb-y {
+        background-color: #ffbb0f !important;
+    }
+
+    // Garante que não fica cinza no hover do sidebar
+    nb-sidebar .ps__thumb-y:hover,
+    nb-sidebar .ps__thumb-x:hover {
+        background-color: #ffbb0f !important;
     }
 
 }

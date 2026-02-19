@@ -1,0 +1,10 @@
+:host {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+button[nbButton] {
+  padding: 0.25rem 0.45rem;
+  min-width: auto;
+}

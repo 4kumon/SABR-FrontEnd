@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbIconModule } from '@nebular/theme';
+import { NbCardModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbIconModule, NbDialogModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { SharedModule } from '../../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { ClienteComponent } from './cliente/cliente.component';
-import { ClienteCreateDialogComponent } from './cliente/cliente-create-dialog/cliente-create-dialog.component';
-import { ClienteEditDialogComponent } from './cliente/cliente-edit-dialog/cliente-edit-dialog.component';
-import { ClienteDeleteDialogComponent } from './cliente/cliente-delete-dialog/cliente-delete-dialog.component';
 
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,
     ThemeModule,
+    SharedModule,
+    NbDialogModule,
     NbCardModule,
     NbButtonModule,
     NbInputModule,
@@ -25,9 +25,6 @@ import { ClienteDeleteDialogComponent } from './cliente/cliente-delete-dialog/cl
   ],
   declarations: [
     ClienteComponent,
-    ClienteCreateDialogComponent,
-    ClienteEditDialogComponent,
-    ClienteDeleteDialogComponent,
   ],
 })
 export class CadastroModule { }
