@@ -1,0 +1,18 @@
+<nb-card>
+  <nb-card-header>
+    Confirmar Exclusão
+  </nb-card-header>
+  <nb-card-body>
+    <p *ngIf="!isMultiple">
+      Tem certeza que deseja excluir o canal <strong>{{ canal?.nome }}</strong>?
+    </p>
+    <p *ngIf="isMultiple">
+      Tem certeza que deseja excluir os canais selecionados?
+    </p>
+    <p style="color: #ff3d00; font-weight: 500;">Esta ação não pode ser desfeita.</p>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
+    <button nbButton status="danger" (click)="confirm()">Excluir</button>
+  </nb-card-footer>
+</nb-card>

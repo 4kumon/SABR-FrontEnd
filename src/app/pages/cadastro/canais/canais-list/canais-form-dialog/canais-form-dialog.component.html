@@ -1,0 +1,37 @@
+<nb-card>
+  <nb-card-header>
+    {{ isEditMode ? 'Editar Canal' : 'Novo Canal' }}
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="nome">Nome *</label>
+        <input nbInput fullWidth id="nome" formControlName="nome" placeholder="Digite o nome do canal">
+        <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched" class="error-text">
+          Nome é obrigatório (mínimo 3 caracteres)
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo *</label>
+        <nb-select fullWidth id="tipo" formControlName="tipo" placeholder="Selecione o tipo">
+          <nb-option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</nb-option>
+        </nb-select>
+        <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="error-text">
+          Tipo é obrigatório
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status *</label>
+        <nb-select fullWidth id="status" formControlName="status" placeholder="Selecione o status">
+          <nb-option *ngFor="let status of statuses" [value]="status">{{ status }}</nb-option>
+        </nb-select>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
+    <button nbButton status="primary" (click)="save()">{{ isEditMode ? 'Salvar' : 'Criar' }}</button>
+  </nb-card-footer>
+</nb-card>

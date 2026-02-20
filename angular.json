@@ -37,6 +37,8 @@
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/ag-grid-community/styles/ag-grid.css",
+              "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
               "src/app/@theme/styles/styles.scss"
             ],
             "scripts": [
@@ -187,5 +189,8 @@
     "@angular-eslint/schematics:library": {
       "setParserOptionsProject": true
     }
+  },
+  "cli": {
+    "analytics": "6a77b3b8-8d44-4f74-b4cd-27f5f23c8555"
   }
 }
