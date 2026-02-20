@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbCardModule, NbButtonModule, NbIconModule } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-canais-delete-dialog',
   templateUrl: './canais-delete-dialog.component.html',
   styleUrls: ['./canais-delete-dialog.component.scss'],
+  standalone: true,
+  imports: [NbCardModule, NbButtonModule, NbIconModule],
 })
 export class CanaisDeleteDialogComponent {
   canal: any;

@@ -7,10 +7,6 @@ import { AgGridModule } from 'ag-grid-angular';
 import { ThemeModule } from '../../@theme/theme.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
-import { ClienteComponent } from './cliente/cliente.component';
-import { CanaisListComponent } from './canais/canais-list/canais-list.component';
-import { CanaisFormDialogComponent } from './canais/canais-list/canais-form-dialog/canais-form-dialog.component';
-import { CanaisDeleteDialogComponent } from './canais/canais-list/canais-delete-dialog/canais-delete-dialog.component';
 
 @NgModule({
   imports: [
@@ -29,12 +25,6 @@ import { CanaisDeleteDialogComponent } from './canais/canais-list/canais-delete-
     Ng2SmartTableModule,
     AgGridModule,
     CadastroRoutingModule,
-  ],
-  declarations: [
-    ClienteComponent,
-    CanaisListComponent,
-    CanaisFormDialogComponent,
-    CanaisDeleteDialogComponent,
   ],
 })
 export class CadastroModule { }

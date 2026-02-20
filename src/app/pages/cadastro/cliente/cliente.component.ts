@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NbCardModule, NbButtonModule, NbIconModule } from '@nebular/theme';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
 import { SmartTableService } from '../../../@core/mock/smart-table.service';
@@ -9,11 +11,14 @@ import { CrudCreateDialogComponent } from '../../../shared/components/crud-dialo
 import { CrudEditDialogComponent } from '../../../shared/components/crud-dialogs/edit-dialog/crud-edit-dialog.component';
 import { CrudDeleteDialogComponent } from '../../../shared/components/crud-dialogs/delete-dialog/crud-delete-dialog.component';
 import { ActionsCellComponent } from '../../../shared/components/actions-cell/actions-cell.component';
+import { CrudToolbarComponent } from '../../../shared/components/crud-toolbar/crud-toolbar.component';
 
 @Component({
     selector: 'ngx-cliente',
     templateUrl: './cliente.component.html',
     styleUrls: ['./cliente.component.scss'],
+    standalone: true,
+    imports: [CrudToolbarComponent, Ng2SmartTableModule, NbCardModule, NbButtonModule, NbIconModule],
 })
 
 export class ClienteComponent {

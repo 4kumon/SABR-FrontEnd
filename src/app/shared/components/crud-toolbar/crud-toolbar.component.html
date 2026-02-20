@@ -1,0 +1,43 @@
+<div class="crud-toolbar">
+  <div class="toolbar-left">
+    <span class="toolbar-title" *ngIf="title">{{ title }}</span>
+  </div>
+
+  <div class="toolbar-right">
+    <!-- Campo de busca -->
+    <input
+      *ngIf="showSearch"
+      type="text"
+      class="search-input"
+      [placeholder]="searchPlaceholder"
+      [value]="searchValue"
+      (input)="onSearchChange($event.target.value)"
+    />
+
+    <!-- Botão Exportar CSV -->
+    <button
+      *ngIf="showExport"
+      nbButton
+      size="small"
+      [status]="exportButtonStatus"
+      (click)="onExportClick()"
+      class="export-button"
+    >
+      <nb-icon icon="download-outline"></nb-icon>
+      {{ exportButtonText }}
+    </button>
+
+    <!-- Botão Novo -->
+    <button
+      *ngIf="showCreate"
+      nbButton
+      size="small"
+      [status]="createButtonStatus"
+      (click)="onCreateClick()"
+      class="create-button"
+    >
+      <nb-icon icon="plus-outline"></nb-icon>
+      {{ createButtonText }}
+    </button>
+  </div>
+</div>

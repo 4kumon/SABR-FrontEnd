@@ -1,11 +1,11 @@
 <nb-card>
-    <nb-card-header class="card-header-actions">
-        <span>Clientes</span>
-
-        <button nbButton size="small" status="success" (click)="onCreate()">
-            <nb-icon icon="plus-outline"></nb-icon>
-            Novo
-        </button>
+    <nb-card-header>
+        <ngx-crud-toolbar
+            title="Clientes"
+            createButtonText="Novo"
+            createButtonStatus="warning"
+            (create)="onCreate()"
+        ></ngx-crud-toolbar>
     </nb-card-header>
 
     <nb-card-body>

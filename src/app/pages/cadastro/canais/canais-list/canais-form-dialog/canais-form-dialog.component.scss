@@ -5,12 +5,22 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+
+    .required {
+      color: #ff3d00;
+    }
   }
 
   .error-text {
     color: #ff3d00;
     font-size: 0.75rem;
     margin-top: 0.25rem;
+  }
+
+  ::ng-deep {
+    .input-error {
+      border-color: #ff3d00 !important;
+    }
   }
 }
 

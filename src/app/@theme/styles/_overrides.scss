@@ -138,11 +138,15 @@
         color: #ffbb0f !important;
     }
 
-    // a “barra/indicador” do item ativo (o azul)
+    // a “barra/indicador” do item ativo
     nb-sidebar nb-menu a.active::before {
         background: #ffbb0f !important;
     }
 
+    // Texto branco ao passar o mouse no menu ativo
+    nb-sidebar nb-menu a.active:hover {
+        color: #ffffff !important;
+    }
 
     /* ==========================================================
    1) Scrollbar NATIVO (Chrome/Edge/Safari + Firefox)
@@ -213,5 +217,40 @@
     nb-sidebar .ps__thumb-x:hover {
         background-color: #ffbb0f !important;
     }
+
+    /* checkbox marcado (a “bolinha/ícone” do check) */
+    .ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked::after {
+        color: #999999 !important;
+        /* escolha sua cor */
+    }
+
+    .ag-theme-alpine {
+        --ag-selected-row-background-color: transparent;
+    }
+
+
+    /* Indeterminate = aparência de desmarcado (visível e não apagado) */
+    .ag-theme-alpine .ag-checkbox-input-wrapper.ag-indeterminate {
+        opacity: 1 !important;
+        /* tira o "apagado" */
+        background-color: transparent !important;
+        border: 1px solid var(--ag-border-color, #d9d9d9) !important;
+    }
+
+    /* Remove só o ícone de "menos" do indeterminate */
+    .ag-theme-alpine .ag-checkbox-input-wrapper.ag-indeterminate::after {
+        content: none !important;
+    }
+
+    /* (Opcional) garanta que isso pega especificamente o checkbox do header */
+    .ag-theme-alpine .ag-header-select-all .ag-checkbox-input-wrapper.ag-indeterminate {
+        opacity: 1 !important;
+    }
+
+
+
+
+
+
 
 }
