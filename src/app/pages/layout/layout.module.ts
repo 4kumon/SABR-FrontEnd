@@ -24,7 +24,6 @@ import { NewsPostComponent } from './infinite-list/news-post/news-post.component
 import { NewsPostPlaceholderComponent } from './infinite-list/news-post-placeholder/news-post-placeholder.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { NewsService } from './news.service';
-import { UsuariosComponent } from './cadastro/usuarios/usuarios.component';
 
 @NgModule({
   imports: [
@@ -58,7 +57,6 @@ import { UsuariosComponent } from './cadastro/usuarios/usuarios.component';
     InfiniteListComponent,
     NewsPostComponent,
     AccordionComponent,
-    UsuariosComponent,
   ],
   providers: [
     NewsService,

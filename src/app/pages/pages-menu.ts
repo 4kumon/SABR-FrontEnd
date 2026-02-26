@@ -33,7 +33,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
             {
                 title: 'Integrações',
                 icon: 'globe-outline',
-                link: '/pages/layout/accordion',
+                link: '/pages/cadastro/integracao',
             },
             {
                 title: 'Produtos',
@@ -43,7 +43,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
             {
                 title: 'Usuários',
                 icon: 'person-outline',
-                link: '/pages/layout/cadastro/usuarios',
+                link: '/pages/cadastro/usuario',
             },
         ],
     },
@@ -271,10 +271,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Tables & Data',
         icon: 'grid-outline',
         children: [
-            {
-                title: 'Smart Table',
-                link: '/pages/tables/smart-table',
-            },
             {
                 title: 'Tree Grid',
                 link: '/pages/tables/tree-grid',

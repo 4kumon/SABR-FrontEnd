@@ -7,16 +7,11 @@ import { AccordionComponent } from './accordion/accordion.component';
 import { InfiniteListComponent } from './infinite-list/infinite-list.component';
 import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
-import { UsuariosComponent } from './cadastro/usuarios/usuarios.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
-  children: [
-    {
-      path: 'cadastro/usuarios',
-      component: UsuariosComponent,
-    },
+  children: [,
     {
       path: 'stepper',
       component: StepperComponent,
