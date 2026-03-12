@@ -20,16 +20,7 @@ import {
   HeaderComponent,
 } from './components';
 import {
-  CapitalizePipe,
-  PluralPipe,
-  RoundPipe,
-  TimingPipe,
-  NumberWithCommasPipe,
-} from './pipes';
-import {
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
 } from './layouts';
 import { DEFAULT_THEME } from './styles/theme.default';
 
@@ -50,21 +41,12 @@ const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
-];
-const PIPES = [
-  CapitalizePipe,
-  PluralPipe,
-  RoundPipe,
-  TimingPipe,
-  NumberWithCommasPipe,
 ];
 
 @NgModule({
   imports: [CommonModule, ...NB_MODULES],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES],
+  exports: [CommonModule, ...COMPONENTS],
+  declarations: [...COMPONENTS],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders<ThemeModule> {
