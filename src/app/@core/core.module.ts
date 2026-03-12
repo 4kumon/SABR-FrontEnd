@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule } from '@nebular/auth';
+import { SabrAuthStrategy } from './strategies/sabr-auth.strategy';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -51,24 +52,6 @@ import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
-const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'twitter',
-  },
-];
-
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
   { provide: ElectricityData, useClass: ElectricityService },
@@ -103,20 +86,25 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      SabrAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+        delay: 800,
       }),
     ],
     forms: {
       login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
+        strategy: 'email',
+        redirectDelay: 300,
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        rememberMe: false,
       },
     },
   }).providers,
+
+  SabrAuthStrategy,
 
   NbSecurityModule.forRoot({
     accessControl: {

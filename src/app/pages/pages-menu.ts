@@ -2,19 +2,9 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
     {
-        title: 'E-commerce',
-        icon: 'shopping-cart-outline',
-        link: '/pages/dashboard',
-        home: true,
-    },
-    {
-        title: 'IoT Dashboard',
+        title: 'Dashboard',
         icon: 'home-outline',
         link: '/pages/iot-dashboard',
-    },
-    {
-        title: 'FEATURES',
-        group: true,
     },
     {
         title: 'Cadastros',
@@ -84,6 +74,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
                 link: '/pages/layout/list',
             },
         ],
+    },
+        {
+        title: 'E-commerce',
+        icon: 'shopping-cart-outline',
+        link: '/pages/dashboard',
+        home: true,
     },
     {
         title: 'Layout',

@@ -2,13 +2,13 @@ import { Component, ChangeDetectorRef, Inject, ViewEncapsulation } from '@angula
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { NbLoginComponent as NbLoginBase, NbAuthService, NB_AUTH_OPTIONS } from '@nebular/auth';
+import { NbRequestPasswordComponent as NbRequestPasswordBase, NbAuthService, NB_AUTH_OPTIONS } from '@nebular/auth';
 import { NbAlertModule, NbInputModule, NbButtonModule, NbIconModule, NbSpinnerModule } from '@nebular/theme';
 
 @Component({
-    selector: 'ngx-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    selector: 'ngx-request-password',
+    templateUrl: './request-password.component.html',
+    styleUrls: ['./request-password.component.scss'],
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
@@ -22,9 +22,7 @@ import { NbAlertModule, NbInputModule, NbButtonModule, NbIconModule, NbSpinnerMo
         RouterModule,
     ],
 })
-export class LoginComponent extends NbLoginBase {
-
-    showPassword = false;
+export class RequestPasswordComponent extends NbRequestPasswordBase {
 
     constructor(
         service: NbAuthService,
@@ -33,16 +31,5 @@ export class LoginComponent extends NbLoginBase {
         router: Router,
     ) {
         super(service, options, cd, router);
-    }
-
-    toggleShowPassword(): void {
-        this.showPassword = !this.showPassword;
-    }
-
-    ngOnInit(): void {
-        const spinner = document.getElementById('nb-global-spinner');
-        if (spinner) {
-            spinner.style.display = 'none';
-        }
     }
 }

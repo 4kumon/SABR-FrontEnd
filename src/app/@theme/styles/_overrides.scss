@@ -62,9 +62,6 @@
         }
     }
 
-
-
-
     nb-sidebar nb-menu a.active {
         font-weight: 700 !important;
     }
@@ -132,13 +129,12 @@
         vertical-align: middle !important;
     }
 
-
     // item ativo do menu (inclui compactado)
     nb-sidebar nb-menu a.active {
         color: #ffbb0f !important;
     }
 
-    // a “barra/indicador” do item ativo
+    // a "barra/indicador" do item ativo
     nb-sidebar nb-menu a.active::before {
         background: #ffbb0f !important;
     }
@@ -218,7 +214,7 @@
         background-color: #ffbb0f !important;
     }
 
-    /* checkbox marcado (a “bolinha/ícone” do check) */
+    /* checkbox marcado (a "bolinha/ícone" do check) */
     .ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked::after {
         color: #999999 !important;
         /* escolha sua cor */
@@ -227,7 +223,6 @@
     .ag-theme-alpine {
         --ag-selected-row-background-color: transparent;
     }
-
 
     /* Indeterminate = aparência de desmarcado (visível e não apagado) */
     .ag-theme-alpine .ag-checkbox-input-wrapper.ag-indeterminate {
@@ -246,11 +241,5 @@
     .ag-theme-alpine .ag-header-select-all .ag-checkbox-input-wrapper.ag-indeterminate {
         opacity: 1 !important;
     }
-
-
-
-
-
-
 
 }
