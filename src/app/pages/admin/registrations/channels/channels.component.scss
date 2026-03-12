@@ -1,0 +1,144 @@
+// VARIÁVEIS E TEMAS GLOBAIS
+:host {
+    display: block;
+    --ag-row-hover-color: #fff7e2;
+    --ag-selected-row-border-color: transparent;
+    --ag-row-border-style: solid;
+    --ag-row-border-width: 0px;
+    --ag-cell-focus-border-width: 0px;
+    --ag-focused-cell-border: none;
+}
+
+// COMPONENTES NEBULAR
+nb-card {
+    margin-bottom: 1rem;
+}
+
+nb-card-header {
+    h3 {
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+// CLASSES UTILITÁRIAS
+.text-right {
+    text-align: right;
+}
+
+button[nbButton] {
+    nb-icon {
+        margin-right: 0.5rem;
+    }
+}
+
+// ZEBRA STRIPING BASE
+.ag-row-even {
+    background-color: #f8f9fa !important;
+}
+
+.ag-row-odd {
+    background-color: #ffffff !important;
+}
+
+// AG-GRID CUSTOMIZAÇÕES (::ng-deep)
+:host ::ng-deep {
+
+    // ---- HOVER E INTERATIVIDADE ----
+    .ag-row-hover .ag-cell,
+    .ag-row:hover .ag-cell {
+        background-color: #cecece !important;
+    }
+
+    // ---- FOCUS E SELEÇÃO ----
+    .ag-cell-focus,
+    .ag-cell-range-selected,
+    .ag-cell-range-selected-1,
+    .ag-cell-range-selected-2,
+    .ag-cell-range-selected-3,
+    .ag-cell-range-selected-4 {
+        border: none !important;
+        outline: none !important;
+    }
+
+    .ag-cell:focus,
+    .ag-row:focus,
+    .ag-row-focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .ag-cell-focus {
+        outline: 0 !important;
+        border: 0 !important;
+    }
+
+    // ---- CÉLULAS ----
+    .ag-cell {
+        outline: 0 solid transparent !important;
+        border: 0 solid transparent !important;
+        line-height: normal !important;
+        vertical-align: middle !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .ag-cell:focus {
+        outline: 0 solid transparent !important;
+        border: 0 solid transparent !important;
+        box-shadow: none !important;
+    }
+
+    .ag-cell-inline-editing {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    // ---- LINHAS ----
+    .ag-row {
+        visibility: visible !important;
+        height: 48px !important;
+        overflow: hidden !important;
+    }
+
+    .ag-row-selected {
+        visibility: visible !important;
+        height: 48px !important;
+        display: flex !important;
+    }
+
+    .ag-row-even {
+        background-color: #f0f0f0 !important;
+    }
+
+    .ag-row-odd {
+        background-color: #ffffff !important;
+    }
+
+    // ---- SELEÇÃO ----
+    .ag-range-selection-border {
+        display: none !important;
+    }
+
+    // ---- TRADUÇÃO DE AND/OR ----
+    .ag-filter-condition-operator-and .ag-radio-button-label {
+        position: relative;
+        font-size: 0;
+    }
+
+    .ag-filter-condition-operator-and .ag-radio-button-label::before {
+        content: 'E';
+        font-size: 14px;
+    }
+
+    .ag-filter-condition-operator-or .ag-radio-button-label {
+        position: relative;
+        font-size: 0;
+    }
+
+    .ag-filter-condition-operator-or .ag-radio-button-label::before {
+        content: 'OU';
+        font-size: 14px;
+    }
+
+}

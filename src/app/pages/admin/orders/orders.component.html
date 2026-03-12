@@ -1,0 +1,21 @@
+<div class="pedidos-filter">
+    <nb-select [placeholder]="'common.filterByStatus' | translate" [selected]="statusFilter" (selectedChange)="onFilterChange($event)">
+        <nb-option value="todos">{{ 'common.all' | translate }}</nb-option>
+        <nb-option value="pago">{{ 'status.paidPlural' | translate }}</nb-option>
+        <nb-option value="cancelado">{{ 'status.cancelledPlural' | translate }}</nb-option>
+        <nb-option value="pendente">{{ 'status.pendingPlural' | translate }}</nb-option>
+    </nb-select>
+</div>
+
+<app-ag-grid-table
+  [columnDefs]="columnDefs"
+  [rowData]="rowData"
+  [title]="'menu.admin.orders' | translate"
+  [pagination]="true"
+  [paginationPageSize]="10"
+  [localeText]="localeText"
+  [formFields]="formFields"
+  (onAdd)="onAddNew($event)"
+  (onEdit)="onEditRow($event)"
+  (onDeleteSelected)="onDeleteSelected($event)">
+</app-ag-grid-table>

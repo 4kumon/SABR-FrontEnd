@@ -3,23 +3,24 @@ import { CommonModule } from '@angular/common';
 import { NbDialogRef, NbCardModule, NbInputModule, NbButtonModule, NbIconModule, NbSelectModule } from '@nebular/theme';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FormFieldConfig } from '../../../@core/models/form-field.models';
+import { TranslationService } from '../../../@core/services/translation.service';
+import { TranslatePipe } from '../../../@core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-shared-dialog',
   templateUrl: './shared-dialog.component.html',
   styleUrls: ['./shared-dialog.component.scss'],
   standalone: true,
-  imports: [CommonModule, NbCardModule, NbInputModule, NbButtonModule, NbIconModule, NbSelectModule, ReactiveFormsModule],
+  imports: [CommonModule, NbCardModule, NbInputModule, NbButtonModule, NbIconModule, NbSelectModule, ReactiveFormsModule, TranslatePipe],
 })
 export class SharedDialogComponent implements OnInit {
-  // Context properties (set by NbDialogService)
   mode: 'form' | 'delete' | 'export' = 'form';
   title: string = '';
-  fields: FormFieldConfig[] = [];   // para mode 'form'
-  data: any = null;                  // para mode 'form' (null=novo, objeto=edição)
-  count: number = 0;                 // para mode 'delete' e 'export'
-  total: number = 0;                 // para mode 'export'
-  buttonStatus: string = 'primary';   // cor do botão de confirmação ('info', 'warning', 'danger', 'success')
+  fields: FormFieldConfig[] = [];
+  data: any = null;
+  count: number = 0;
+  total: number = 0;
+  buttonStatus: string = 'primary';
 
   form!: FormGroup;
   isEditMode = false;
@@ -27,6 +28,7 @@ export class SharedDialogComponent implements OnInit {
   constructor(
     private dialogRef: NbDialogRef<SharedDialogComponent>,
     private fb: FormBuilder,
+    private t: TranslationService,
   ) {}
 
   ngOnInit(): void {
@@ -35,8 +37,6 @@ export class SharedDialogComponent implements OnInit {
       this.buildForm();
     }
   }
-
-  // ---- FORM MODE ----
 
   private buildForm(): void {
     const group: { [key: string]: any } = {};
@@ -73,8 +73,6 @@ export class SharedDialogComponent implements OnInit {
     return !!(control && control.invalid && control.touched);
   }
 
-  // ---- SHARED ----
-
   cancel(): void {
     if (this.mode === 'form') {
       this.dialogRef.close(null);
@@ -87,16 +85,16 @@ export class SharedDialogComponent implements OnInit {
     this.dialogRef.close(true);
   }
 
-  // ---- HELPERS ----
-
   get dialogTitle(): string {
     switch (this.mode) {
       case 'form':
-        return this.isEditMode ? 'Editar - ' + this.title : 'Novo - ' + this.title;
+        return this.isEditMode
+          ? this.t.get('dialog.editPrefix') + ' - ' + this.title
+          : this.t.get('dialog.newPrefix') + ' - ' + this.title;
       case 'delete':
-        return 'Confirmar exclusão';
+        return this.t.get('dialog.confirmDelete');
       case 'export':
-        return 'Exportar CSV';
+        return this.t.get('dialog.exportCsv');
     }
   }
 }

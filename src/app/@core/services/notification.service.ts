@@ -1,45 +1,47 @@
 import { Injectable } from '@angular/core';
 import { NbToastrService } from '@nebular/theme';
+import { TranslationService } from './translation.service';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
 
-    constructor(private toastrService: NbToastrService) {}
+    constructor(
+        private toastrService: NbToastrService,
+        private t: TranslationService,
+    ) {}
 
-    // ---- SUCESSO CRUD ----
     successCreate(): void {
-        this.toastrService.success('Registro criado com sucesso!', 'Sucesso');
+        this.toastrService.success(this.t.get('notifications.recordCreated'), this.t.get('notifications.success'));
     }
 
     successUpdate(): void {
-        this.toastrService.success('Registro atualizado com sucesso!', 'Sucesso');
+        this.toastrService.success(this.t.get('notifications.recordUpdated'), this.t.get('notifications.success'));
     }
 
     successDelete(count: number = 1): void {
         const msg = count === 1
-            ? 'Registro excluído com sucesso!'
-            : 'Registros excluídos com sucesso!';
-        this.toastrService.success(msg, 'Sucesso');
+            ? this.t.get('notifications.recordDeleted')
+            : this.t.get('notifications.recordsDeleted');
+        this.toastrService.success(msg, this.t.get('notifications.success'));
     }
 
     successExport(): void {
-        this.toastrService.success('Exportação realizada com sucesso!', 'Sucesso');
+        this.toastrService.success(this.t.get('notifications.exportSuccess'), this.t.get('notifications.success'));
     }
 
-    // ---- GENÉRICOS (para mensagens customizadas) ----
     success(message: string): void {
-        this.toastrService.success(message, 'Sucesso');
+        this.toastrService.success(message, this.t.get('notifications.success'));
     }
 
-    error(message: string = 'Ocorreu um erro. Tente novamente.'): void {
-        this.toastrService.danger(message, 'Erro');
+    error(message?: string): void {
+        this.toastrService.danger(message || this.t.get('notifications.genericError'), this.t.get('notifications.error'));
     }
 
     warning(message: string): void {
-        this.toastrService.warning(message, 'Atenção');
+        this.toastrService.warning(message, this.t.get('notifications.warning'));
     }
 
     info(message: string): void {
-        this.toastrService.info(message, 'Info');
+        this.toastrService.info(message, this.t.get('notifications.info'));
     }
 }

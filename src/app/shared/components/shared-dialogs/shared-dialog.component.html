@@ -45,7 +45,7 @@
                 fullWidth
                 [id]="field.name"
                 [formControlName]="field.name"
-                [placeholder]="field.placeholder || 'Selecione...'">
+                [placeholder]="field.placeholder || ('dialog.selectPlaceholder' | translate)">
                 <nb-option *ngFor="let opt of field.options" [value]="opt.value">
                   {{ opt.label }}
                 </nb-option>
@@ -53,8 +53,8 @@
 
               <!-- ERROR -->
               <div *ngIf="isInvalid(field.name)" class="error-text">
-                {{ field.label }} é obrigatório
-                <span *ngIf="field.minLength"> (mínimo {{ field.minLength }} caracteres)</span>
+                {{ field.label }} {{ 'dialog.isRequired' | translate }}
+                <span *ngIf="field.minLength"> ({{ 'dialog.minChars' | translate:{ min: field.minLength } }})</span>
               </div>
 
             </div>
@@ -66,45 +66,45 @@
     <!-- ========== MODE: DELETE ========== -->
     <ng-container *ngIf="mode === 'delete'">
       <p *ngIf="count === 1">
-        Tem certeza que deseja deletar <strong>1 linha</strong> selecionada de <strong>{{ title }}</strong>?
+        {{ 'dialog.deleteSingle' | translate }} <strong>{{ title }}</strong>?
       </p>
       <p *ngIf="count > 1">
-        Tem certeza que deseja deletar as <strong>{{ count }} linhas</strong> selecionadas de <strong>{{ title }}</strong>?
+        {{ 'dialog.deleteMultiple' | translate:{ count: count } }} <strong>{{ title }}</strong>?
       </p>
-      <p class="warning-text">Esta ação não pode ser desfeita.</p>
+      <p class="warning-text">{{ 'dialog.cannotBeUndone' | translate }}</p>
     </ng-container>
 
     <!-- ========== MODE: EXPORT ========== -->
     <ng-container *ngIf="mode === 'export'">
       <p *ngIf="count > 0">
-        Deseja exportar as <strong>{{ count }} linhas selecionadas</strong> de <strong>{{ title }}</strong> em CSV?
+        {{ 'dialog.exportSelected' | translate:{ count: count } }} <strong>{{ title }}</strong> {{ 'dialog.inCsv' | translate }}
       </p>
       <p *ngIf="count === 0">
-        Deseja exportar <strong>todas as {{ total }} linhas</strong> de <strong>{{ title }}</strong> em CSV?
+        {{ 'dialog.exportAll' | translate:{ total: total } }} <strong>{{ title }}</strong> {{ 'dialog.inCsv' | translate }}
       </p>
     </ng-container>
 
   </nb-card-body>
 
   <nb-card-footer>
-    <!-- FORM: botão Criar/Salvar -->
+    <!-- FORM -->
     <ng-container *ngIf="mode === 'form'">
-      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
+      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">{{ 'dialog.cancel' | translate }}</button>
       <button nbButton [status]="buttonStatus" (click)="save()">
-        {{ isEditMode ? 'Salvar' : 'Criar' }}
+        {{ isEditMode ? ('dialog.save' | translate) : ('dialog.create' | translate) }}
       </button>
     </ng-container>
 
-    <!-- DELETE: botões Cancelar + Excluir -->
+    <!-- DELETE -->
     <ng-container *ngIf="mode === 'delete'">
-      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
-      <button nbButton [status]="buttonStatus" (click)="confirm()">Excluir</button>
+      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">{{ 'dialog.cancel' | translate }}</button>
+      <button nbButton [status]="buttonStatus" (click)="confirm()">{{ 'dialog.deleteAction' | translate }}</button>
     </ng-container>
 
-    <!-- EXPORT: botões Cancelar + Exportar -->
+    <!-- EXPORT -->
     <ng-container *ngIf="mode === 'export'">
-      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">Cancelar</button>
-      <button nbButton [status]="buttonStatus" (click)="confirm()">Exportar</button>
+      <button nbButton status="basic" (click)="cancel()" style="margin-right: 8px;">{{ 'dialog.cancel' | translate }}</button>
+      <button nbButton [status]="buttonStatus" (click)="confirm()">{{ 'dialog.exportAction' | translate }}</button>
     </ng-container>
   </nb-card-footer>
 </nb-card>

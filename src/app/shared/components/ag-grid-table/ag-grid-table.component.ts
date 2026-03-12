@@ -5,13 +5,14 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NbCardModule, NbIconModule, NbButtonModule, NbDialogService } from '@nebular/theme';
 import { FormFieldConfig } from '../../../@core/models/form-field.models';
 import { SharedDialogComponent } from '../shared-dialogs/shared-dialog.component';
+import { TranslatePipe } from '../../../@core/pipes/translate.pipe';
 
 @Component({
     selector: 'app-ag-grid-table',
     templateUrl: './ag-grid-table.component.html',
     styleUrls: ['./ag-grid-table.component.scss'],
     standalone: true,
-    imports: [CommonModule, AgGridModule, NbCardModule, NbIconModule, NbButtonModule]
+    imports: [CommonModule, AgGridModule, NbCardModule, NbIconModule, NbButtonModule, TranslatePipe]
 })
 export class AgGridTableComponent implements OnInit {
     @ViewChild(AgGridAngular) agGrid!: AgGridAngular;

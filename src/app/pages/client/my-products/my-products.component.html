@@ -1,0 +1,26 @@
+<nb-card>
+    <nb-card-header>
+        <nb-icon icon="shopping-bag-outline" style="margin-right: 8px;"></nb-icon>
+        {{ 'menu.client.myProducts' | translate }}
+    </nb-card-header>
+    <nb-card-body>
+        <div class="products-grid">
+            <nb-card *ngFor="let produto of produtos" class="product-card">
+                <nb-card-body>
+                    <div class="product-image">
+                        <nb-icon icon="image-outline" style="font-size: 3rem; color: #ccc;"></nb-icon>
+                    </div>
+                    <h6 class="product-name">{{ produto.name }}</h6>
+                    <div class="product-price">R$ {{ produto.price | number:'1.2-2' }}</div>
+                    <div class="product-stock">{{ 'common.stock' | translate }}: {{ produto.quantity }} pcs</div>
+                </nb-card-body>
+                <nb-card-footer>
+                    <button nbButton size="small" status="success" fullWidth>
+                        <nb-icon icon="shopping-cart-outline"></nb-icon>
+                        {{ 'common.buyProduct' | translate }}
+                    </button>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+    </nb-card-body>
+</nb-card>

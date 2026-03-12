@@ -4,16 +4,16 @@
       <h5>{{ title }}</h5>
       <div class="toolbar-buttons">
         <button nbButton status="info" size="small" (click)="onToolbarAdd()">
-          <nb-icon icon="plus-outline"></nb-icon> Novo
+          <nb-icon icon="plus-outline"></nb-icon> {{ 'toolbar.new' | translate }}
         </button>
         <button nbButton status="warning" size="small" (click)="onToolbarEdit()" [disabled]="selectedRows.length !== 1">
-          <nb-icon icon="edit-outline"></nb-icon> Editar
+          <nb-icon icon="edit-outline"></nb-icon> {{ 'toolbar.edit' | translate }}
         </button>
         <button nbButton status="danger" size="small" (click)="onToolbarDelete()" [disabled]="selectedRows.length === 0">
-          <nb-icon icon="trash-2-outline"></nb-icon> Deletar
+          <nb-icon icon="trash-2-outline"></nb-icon> {{ 'toolbar.delete' | translate }}
         </button>
         <button nbButton status="success" size="small" (click)="onToolbarExport()">
-          <nb-icon icon="download-outline"></nb-icon> Exportar
+          <nb-icon icon="download-outline"></nb-icon> {{ 'toolbar.export' | translate }}
         </button>
       </div>
     </div>

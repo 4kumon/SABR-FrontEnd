@@ -94,7 +94,7 @@ export class AgGridMockDataService {
                     type: 'marketplace',
                     name: 'Loja Integrada',
                     shortened_name: 'LOIT',
-                    image_link: '---',
+                    image_link: 'assets/images/canais/lojaintegrada.png',
                     created_at: '2024-07-30 07:04:23',
                     created_by: 'admin',
                 },

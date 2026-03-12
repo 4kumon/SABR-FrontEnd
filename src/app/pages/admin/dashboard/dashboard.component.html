@@ -1,0 +1,21 @@
+<div class="dashboard-grid">
+    <div class="grid-item" *ngFor="let card of cards">
+        <nb-card>
+            <nb-card-header class="kpi-header">
+                <nb-icon *ngIf="card.icon" [icon]="card.icon"></nb-icon>
+                <span *ngIf="card.badge" class="integration-badge" [style.background-color]="card.badge.color">{{ card.badge.initial }}</span>
+                {{ card.title }}
+            </nb-card-header>
+            <nb-card-body>
+                <ng-container *ngIf="!card.chart">
+                    <div class="kpi-value" [class.danger]="card.danger">{{ card.value }}</div>
+                    <a *ngIf="card.link" class="kpi-link">{{ card.link }}</a>
+                </ng-container>
+                <div *ngIf="card.chart" class="chart-placeholder">
+                    <nb-icon [icon]="card.icon" style="font-size: 2rem; opacity: 0.3;"></nb-icon>
+                    <span>{{ 'common.chartUnderDevelopment' | translate }}</span>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

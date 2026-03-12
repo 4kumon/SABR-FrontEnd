@@ -37,33 +37,33 @@ const routes: Routes = [{
       children: [
         {
           path: 'dashboard',
-          loadChildren: () => import('./admin/admin-dashboard/admin-dashboard.module')
+          loadChildren: () => import('./admin/dashboard/dashboard.module')
             .then(m => m.AdminDashboardModule),
         },
         {
-          path: 'perfil',
-          loadChildren: () => import('./admin/perfil/perfil.module')
-            .then(m => m.PerfilModule),
+          path: 'profile',
+          loadChildren: () => import('./admin/profile/profile.module')
+            .then(m => m.ProfileModule),
         },
         {
-          path: 'cadastro',
-          loadChildren: () => import('./cadastro/cadastro.module')
-            .then(m => m.CadastroModule),
+          path: 'registrations',
+          loadChildren: () => import('./admin/registrations/registrations.module')
+            .then(m => m.RegistrationsModule),
         },
         {
-          path: 'financeiro',
-          loadChildren: () => import('./financeiro/financeiro.module')
-            .then(m => m.FinanceiroModule),
+          path: 'financial',
+          loadChildren: () => import('./admin/financial/financial.module')
+            .then(m => m.FinancialModule),
         },
         {
-          path: 'pedidos',
-          loadChildren: () => import('./pedidos/pedidos.module')
-            .then(m => m.PedidosModule),
+          path: 'orders',
+          loadChildren: () => import('./admin/orders/orders.module')
+            .then(m => m.OrdersModule),
         },
         {
-          path: 'direito-acesso',
-          loadChildren: () => import('./direito-acesso/direito-acesso.module')
-            .then(m => m.DireitoAcessoModule),
+          path: 'access-control',
+          loadChildren: () => import('./admin/access-control/access-control.module')
+            .then(m => m.AccessControlModule),
         },
         {
           path: '',
@@ -81,63 +81,63 @@ const routes: Routes = [{
       children: [
         {
           path: 'dashboard',
-          loadChildren: () => import('./cliente/cliente-dashboard/cliente-dashboard.module')
-            .then(m => m.ClienteDashboardModule),
+          loadChildren: () => import('./client/dashboard/client-dashboard.module')
+            .then(m => m.ClientDashboardModule),
         },
         {
-          path: 'meus-produtos',
-          loadChildren: () => import('./cliente/meus-produtos/meus-produtos.module')
-            .then(m => m.MeusProdutosModule),
+          path: 'my-products',
+          loadChildren: () => import('./client/my-products/my-products.module')
+            .then(m => m.MyProductsModule),
         },
         {
-          path: 'pedidos',
-          loadChildren: () => import('./cliente/pedidos/cliente-pedidos.module')
-            .then(m => m.ClientePedidosModule),
+          path: 'orders',
+          loadChildren: () => import('./client/orders/client-orders.module')
+            .then(m => m.ClientOrdersModule),
         },
         {
-          path: 'financeiro',
-          loadChildren: () => import('./cliente/financeiro/cliente-financeiro.module')
-            .then(m => m.ClienteFinanceiroModule),
+          path: 'financial',
+          loadChildren: () => import('./client/financial/client-financial.module')
+            .then(m => m.ClientFinancialModule),
         },
         {
-          path: 'integracoes',
-          loadChildren: () => import('./cliente/integracoes/cliente-integracoes.module')
-            .then(m => m.ClienteIntegracoesModule),
+          path: 'integrations',
+          loadChildren: () => import('./client/integrations/client-integrations.module')
+            .then(m => m.ClientIntegrationsModule),
         },
         // Placeholder routes
         {
-          path: 'pedidos-nao-pagos',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'unpaid-orders',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Pedidos Não Pagos' },
         },
         {
-          path: 'notas-fiscais',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'invoices',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Notas Fiscais' },
         },
         {
-          path: 'publicar-catalogo',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'publish-catalog',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Publicar Catálogo' },
         },
         {
-          path: 'pedido-manual',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'manual-order',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Pedido Manual' },
         },
         {
-          path: 'devolucoes',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'returns',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Devoluções' },
         },
         {
-          path: 'suporte',
-          loadChildren: () => import('./cliente/placeholder/placeholder.module')
+          path: 'support',
+          loadChildren: () => import('./client/placeholder/placeholder.module')
             .then(m => m.ClientePlaceholderModule),
           data: { title: 'Suporte' },
         },
