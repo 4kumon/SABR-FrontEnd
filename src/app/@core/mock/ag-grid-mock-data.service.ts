@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Canal, Cliente, Integracao, Usuario } from '../models/ag-grid.models';
+import { Canal, Cliente, Integracao, Usuario, Produto } from '../models/ag-grid.models';
 
 @Injectable({ providedIn: 'root' })
 export class AgGridMockDataService {
@@ -7,10 +7,12 @@ export class AgGridMockDataService {
     private clientesStorageKey = 'sabr_clientes_data';
     private integracoesStorageKey = 'sabr_integracoes_data';
     private usuariosStorageKey = 'sabr_usuarios_data';
+    private produtosStorageKey = 'sabr_produtos_data';
     private canais: Canal[] = [];
     private clientes: Cliente[] = [];
     private integracoes: Integracao[] = [];
     private usuarios: Usuario[] = [];
+    private produtos: Produto[] = [];
 
 
     constructor() {
@@ -18,6 +20,7 @@ export class AgGridMockDataService {
         this.loadClientesData();
         this.loadIntegracoesData();
         this.loadUsuariosData();
+        this.loadProdutosData();
     }
 
     // ========== CANAIS ==========
@@ -351,5 +354,50 @@ export class AgGridMockDataService {
 
     private saveUsuariosData(): void {
         localStorage.setItem(this.usuariosStorageKey, JSON.stringify(this.usuarios));
+    }
+
+    // ========== PRODUTOS ==========
+    getProdutosData(): Produto[] {
+        return [...this.produtos];
+    }
+
+    addProduto(record: Omit<Produto, 'id'>): void {
+        const newId = this.produtos.length > 0 ? Math.max(...this.produtos.map(p => p.id)) + 1 : 1;
+        const newProduto: Produto = { ...record, id: newId };
+        this.produtos.push(newProduto);
+        this.saveProdutosData();
+    }
+
+    updateProduto(id: number, record: Partial<Produto>): void {
+        const index = this.produtos.findIndex(p => p.id === id);
+        if (index !== -1) {
+            this.produtos[index] = { ...this.produtos[index], ...record, id };
+            this.saveProdutosData();
+        }
+    }
+
+    deleteProduto(id: number): void {
+        this.produtos = this.produtos.filter(p => p.id !== id);
+        this.saveProdutosData();
+    }
+
+    private loadProdutosData(): void {
+        const stored = localStorage.getItem(this.produtosStorageKey);
+        if (stored) {
+            this.produtos = JSON.parse(stored);
+        } else {
+            this.produtos = [
+                { id: 1, name: 'Camiseta Básica', price: 49.90, quantity: 150 },
+                { id: 2, name: 'Calça Jeans Slim', price: 129.90, quantity: 80 },
+                { id: 3, name: 'Tênis Casual', price: 199.90, quantity: 45 },
+                { id: 4, name: 'Mochila Escolar', price: 89.90, quantity: 200 },
+                { id: 5, name: 'Relógio Digital', price: 159.90, quantity: 60 },
+            ];
+            this.saveProdutosData();
+        }
+    }
+
+    private saveProdutosData(): void {
+        localStorage.setItem(this.produtosStorageKey, JSON.stringify(this.produtos));
     }
 }

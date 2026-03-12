@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npx ng build:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(npm install)",
+      "Bash(npm install --legacy-peer-deps)",
+      "Bash(rm -rf .angular/cache)",
+      "Bash(npm start)"
     ]
   }
 }

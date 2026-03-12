@@ -19,54 +19,24 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
-    },
-    {
       path: 'cadastro',
       loadChildren: () => import('./cadastro/cadastro.module')
         .then(m => m.CadastroModule),
     },
     {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
+      path: 'financeiro',
+      loadChildren: () => import('./financeiro/financeiro.module')
+        .then(m => m.FinanceiroModule),
     },
     {
-      path: 'ui-features',
-      loadChildren: () => import('./ui-features/ui-features.module')
-        .then(m => m.UiFeaturesModule),
+      path: 'pedidos',
+      loadChildren: () => import('./pedidos/pedidos.module')
+        .then(m => m.PedidosModule),
     },
     {
-      path: 'modal-overlays',
-      loadChildren: () => import('./modal-overlays/modal-overlays.module')
-        .then(m => m.ModalOverlaysModule),
-    },
-    {
-      path: 'extra-components',
-      loadChildren: () => import('./extra-components/extra-components.module')
-        .then(m => m.ExtraComponentsModule),
-    },
-    {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
-    },
-    {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
-    },
-    {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
+      path: 'direito-acesso',
+      loadChildren: () => import('./direito-acesso/direito-acesso.module')
+        .then(m => m.DireitoAcessoModule),
     },
     {
       path: 'miscellaneous',

@@ -9,59 +9,6 @@
         }
     }
 
-    // Smart-table pagination
-    .pagination {
-        display: inline-flex !important;
-        margin-bottom: 0;
-    }
-
-    .page-link {
-        background-color: nb-theme(smart-table-header-bg);
-        border-color: nb-theme(smart-table-separator);
-        color: #ffbb0f !important;
-        text-decoration: none !important;
-    }
-
-    .page-item.active .page-link {
-        background-color: rgba(255, 187, 15, 0.12) !important;
-        border-color: #ffbb0f !important;
-        color: #ffbb0f !important;
-        font-weight: 700 !important;
-    }
-
-    .page-link:hover {
-        background-color: #ffbb0f !important;
-        border-color: #ffbb0f !important;
-        color: #ffffff !important;
-    }
-
-    ng2-smart-table ng2-smart-table-pager nav {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        // Setas de navegação desabilitadas (< > | << >>) - cinza claro
-        a.page-link-btn.disabled,
-        a.page-link-btn[disabled],
-        li.ng2-smart-page-item.disabled a,
-        li.ng2-smart-page-item.disabled a:hover {
-            background-color: #f5f5f5 !important;
-            color: #999 !important;
-            cursor: not-allowed !important;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        // Números das páginas desabilitados (apenas visual, não clicável)
-        a.ng2-smart-page-link.disabled,
-        a.ng2-smart-page-link[disabled] {
-            color: #999 !important;
-            cursor: not-allowed !important;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-    }
-
     nb-sidebar nb-menu a.active {
         font-weight: 700 !important;
     }
@@ -70,63 +17,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .app-smart-table thead th {
-        text-align: center !important;
-    }
-
-    .app-smart-table thead th ng2-smart-table-title,
-    .app-smart-table thead th ng2-smart-table-title a,
-    .app-smart-table thead th a {
-        color: #000 !important;
-        font-weight: 700 !important;
-    }
-
-    // Smart-table action buttons
-    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action {
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-        width: 2.25rem;
-        height: 2.25rem;
-        border-radius: 0.375rem;
-        text-decoration: none !important;
-        color: #fff !important;
-    }
-
-    // edit
-    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-edit-edit {
-        background: nb-theme(color-warning-default) !important;
-        color: #fff !important;
-    }
-
-    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-edit-edit:hover {
-        background: nb-theme(color-warning-hover) !important;
-    }
-
-    // delete
-    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-delete-delete {
-        background: nb-theme(color-danger-default) !important;
-        color: #fff !important;
-    }
-
-    ng2-smart-table td.ng2-smart-actions a.ng2-smart-action-delete-delete:hover {
-        background: nb-theme(color-danger-hover) !important;
-    }
-
-    // Centraliza o conteúdo da coluna Actions (header e células)
-    ng2-smart-table th.ng2-smart-actions,
-    ng2-smart-table td.ng2-smart-actions {
-        text-align: center !important;
-        vertical-align: middle !important;
-    }
-
-    // Faz os botões ficarem no centro (e com espaço entre eles)
-    ng2-smart-table td.ng2-smart-actions {
-        display: table-cell !important;
-        text-align: center !important;
-        vertical-align: middle !important;
     }
 
     // item ativo do menu (inclui compactado)
