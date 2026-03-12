@@ -1,101 +1,193 @@
-# ngx-admin [<img src="https://i.imgur.com/oMcxwZ0.png" alt="Eva Design System" height="20px" />](https://eva.design?utm_campaign=eva_design%20-%20home%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=top_status_tile)
+# SABR 3.0 - Front-End
 
-[Live Demo](https://demo.akveo.com/ngx-admin/?utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=live_demo_link) | [Who uses ngx-admin?](https://github.com/akveo/ngx-admin/issues/1645) | [Documentation](https://akveo.github.io/ngx-admin?utm_campaign=ngx_admin%20-%20home%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_documentation_link) | [Installation Guidelines](https://akveo.github.io/ngx-admin/docs/getting-started/what-is-ngxadmin?utm_campaign=ngx_admin%20-%20home%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_installation_guidelines) | [Angular templates](https://www.akveo.com/templates?utm_campaign=services%20-%20github%20-%20templates&utm_source=ngx_admin&utm_medium=referral&utm_content=github%20readme%20top%20angular%20templates%20link)
+Sistema Front-End do SABR 3.0, baseado em Angular 15 com Nebular UI.
 
-# Admin template based on Angular and <a href="https://github.com/akveo/nebular">Nebular</a>
+## Stack
 
-<a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=corporate&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=hero_banner_corporate"><img src="https://i.imgur.com/mFdqvgG.png"/></a>
+- **Angular** 15.2.10
+- **Nebular** 11.0.1
+- **AG Grid** 31.3.4
+- **Node.js** 18.20.0 (obrigatorio)
 
-## Repository state and engagement with the community
+---
 
-Repository is currently in a state of minimal maintenance. Our primary focus is on ensuring that the Angular version used in this project is kept up to date. Our capacity to engage in other aspects of repository management is currently limited.
+## 1. Pre-requisitos
 
-We are not actively reviewing or merging pull requests, responding to or resolving issues at this time. We appreciate the effort and contributions from the community and we understand that issues are crucial for the community. But now our current focus is solely on maintaining Angular.
+| Ferramenta | Versao |
+|---|---|
+| Git | mais recente |
+| Node.js | **18.20.0** (via NVM) |
+| Angular CLI | 15.2.10 |
 
-## Installation notes
+> **IMPORTANTE:** Angular 15.2.x exige Node 18 (>= 18.10.0). Node 20+ nao e compativel com todas as dependencias.
 
-To install ngx-admin you have to use NodeJS version 14.14+ because of [node-sass](https://github.com/sass/node-sass) version utilized in the application.
+---
 
-## Key features
+## 2. Instalar Git
 
-- The most popular and trusted Angular open source dashboard template is out there. Used by hundreds of thousands developers worldwide and Fortune 500 companies\*.
-- Over 40+ Angular Components and 60+ Usage Examples. Kick off your project and save money by using ngx-admin.
-- Already using ngx-admin and willing to switch to material theme? Material theme is backward-compatible. Check out the article describing how to do that.
-- ngx-admin material works perfectly with Angular Material and Nebular. Take the best from both!
+Baixe em https://git-scm.com/ e valide:
 
-### What's included:
+```bash
+git --version
+```
 
-- Angular & Typescript
-- Bootstrap 4+ & SCSS
-- Responsive layout
-- RTL support
-- High resolution
-- Flexibly configurable themes with **hot-reload** (3 themes included)
-- Authentication module with multiple providers
-- 40+ Angular Components
-- 60+ Usage Examples
+Configure sua identidade:
 
-## Material theme for ngx-admin
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu.email@empresa.com"
+```
 
-Material admin theme is based on the most popular Angular dashboard template - [ngx-admin](https://akveo.github.io/ngx-admin?utm_campaign=ngx_admin%20-%20home%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin_material&utm_medium=referral&utm_content=github_readme)
-To use material theme checkout `feat/material-theme` branch.
+---
 
-### Templates
+## 3. Instalar NVM + Node 18
 
-<a href="https://www.akveo.com/templates/fleet-management-dashboard?utm_campaign=services%20[…]x-admin%20&utm_medium=referral%20&utm_content=github_banner%20"><img src="https://i.imgur.com/Z8EwGfh.png"></a>
+### Windows (nvm-windows)
 
-### With 6 stunning visual themes
+Baixe o instalador em https://github.com/coreybutler/nvm-windows/releases (`nvm-setup.exe`).
 
-| <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=material-dark&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20docs&utm_source=ngx_admin&utm_medium=referral&utm_content=ngx_admin_material_themes_material_dark"><img src="https://i.imgur.com/67YAlhf.png"/></a> | <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=material-light&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20docs&utm_source=ngx_admin&utm_medium=referral&utm_content=ngx_admin_material_themes_material_light"><img src="https://i.imgur.com/aQzw0hD.png"/></a> |
-| --- | --- |
-|  Material Dark | Material Light |
+> Desinstale versoes previas do Node antes de usar o nvm-windows para evitar conflito de PATH.
 
-| <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=dark&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_theme_dark"><img src="https://i.imgur.com/9UkTGgr.png"/></a> | <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=default&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_theme_default"><img src="https://i.imgur.com/Kn3xDKQ.png"/></a> |
-| --- | --- |
-|  Dark| Default |
+```bash
+nvm install 18.20.0
+nvm use 18.20.0
+node -v   # deve mostrar v18.20.0
+```
 
-| <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=cosmic&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_theme_cosmic"><img src="https://i.imgur.com/iJu2YDF.png"/></a> | <a target="_blank" href="https://demo.akveo.com/ngx-admin/pages/dashboard?theme=corporate&utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=github_readme_theme_corporate"><img src="https://i.imgur.com/GpUt6NW.png"/></a> |
-| --- | --- |
-| Cosmic  | Corporate |
+---
 
-## Documentation
+## 4. Clonar e instalar
 
-This template is using [Nebular](https://github.com/akveo/nebular) modules set, [here you can find documentation and other useful articles](https://akveo.github.io/nebular/docs/guides/install-based-on-starter-kit?utm_campaign=nebular%20-%20docs%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=documentation_useful_articles).
+```bash
+git clone <url-do-repositorio>
+cd SABR-FrontEnd
+```
 
-### Empty starter kit
+Confirme o Node correto:
 
-Don't need all the pages and modules and just looking for an empty starter kit for your next project? Check out our [starter-kit branch](https://github.com/akveo/ngx-admin/tree/starter-kit).
+```bash
+node -v   # v18.20.0
+```
 
-## BrowserStack
+Instale as dependencias:
 
-This project runs its tests on multiple desktop and mobile browsers using [BrowserStack](http://www.browserstack.com).
+```bash
+npm install --legacy-peer-deps
+```
 
-<img src="https://cloud.githubusercontent.com/assets/131406/22254249/534d889e-e254-11e6-8427-a759fb23b7bd.png" height="40" />
+---
 
-## UI Bakery
+## 5. Rodar
 
-Need a visual admin dashboard builder? Check out [UI Bakery](https://uibakery.io).
+```bash
+npm start
+```
 
-<a href="https://uibakery.io"><img src="https://storage.uibakery.io/video-assets/landing/Logo/UIB%20400x150.png" height="80" /></a>
+Acesse: http://localhost:4200
 
-## More from Akveo
+---
 
-- [Eva Icons](https://github.com/akveo/eva-icons) - 480+ beautiful Open Source icons
-- [Nebular](https://github.com/akveo/nebular) - Angular Components, Auth and Security
-- [Akveo templates](https://www.akveo.com/templates?utm_campaign=services%20-%20github%20-%20templates&utm_source=ngx_admin&utm_medium=referral&utm_content=ngx_admin%20github%20readme%20more%20from%20akveo%20link) - 10+ Ready-to-use apps templates to speed up your apps developments
+## 6. Build de producao
 
-## How can I support developers?
+```bash
+ng build --configuration production
+```
 
-- Star our GitHub repo :star:
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow us on [Twitter](https://twitter.com/akveo_inc) :feet:
-- Like our page on [Facebook](https://www.facebook.com/akveo/) :thumbsup:
+---
 
-## Looking for engineering services? 
+## 7. Troubleshooting
 
-Visit [our homepage](https://www.akveo.com?utm_campaign=services%20-%20akveo%20website%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=looking_for_engineering_services_visit_homepage) or simply leave us a message to [contact@akveo.com](mailto:contact@akveo.com). We will be happy to work with you!
+### npm install falha com conflito de dependencias
 
-## From Developers
+Use `--legacy-peer-deps`:
 
-Made with :heart: by [Akveo team](https://www.akveo.com?utm_campaign=services%20-%20akveo%20website%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=from_developers_made_by). Follow us on [Twitter](https://twitter.com/akveo_inc) to get the latest news first!
-We're always happy to receive your feedback!
+```bash
+npm install --legacy-peer-deps
+```
+
+### node-sass + Python (ENOENT / EPERM)
+
+O `node-sass` e incompativel com Node 18+. Substitua no `package.json`:
+
+```json
+// remover: "node-sass": "^4.14.1"
+// adicionar: "sass": "^1.69.0"
+```
+
+Depois limpe e reinstale:
+
+```bash
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install --legacy-peer-deps
+```
+
+### @types/ws - Type 'Server' is not generic
+
+```bash
+npm install @types/ws@8.5.4 --legacy-peer-deps
+```
+
+### nvm nao troca a versao do Node
+
+- Verifique se nao existe Node instalado manualmente (conflito de PATH).
+- Execute o terminal como Administrador.
+
+---
+
+## 8. Estrutura do projeto
+
+```
+src/
+├── app/
+│   ├── @core/                          # Nucleo da aplicacao
+│   │   ├── guards/                     # Guards de rota (AuthGuard, RoleGuard)
+│   │   ├── mock/                       # Servicos de dados mock
+│   │   ├── models/                     # Models (ag-grid, form-field)
+│   │   ├── pipes/                      # Pipes (translate)
+│   │   ├── services/                   # Services (auth, menu, notification, translation)
+│   │   ├── strategies/                 # Estrategias de autenticacao
+│   │   └── utils/                      # Utilitarios (validators, helpers)
+│   │
+│   ├── @theme/                         # Tema e layout
+│   │   ├── components/                 # Header, Footer
+│   │   ├── layouts/                    # Layout principal (one-column)
+│   │   └── styles/                     # SCSS global e overrides
+│   │
+│   ├── shared/                         # Componentes reutilizaveis
+│   │   └── components/
+│   │       ├── ag-grid-table/          # Tabela CRUD generica com AG Grid
+│   │       └── shared-dialogs/         # Dialog generico (form/delete/export)
+│   │
+│   └── pages/
+│       ├── auth/                       # Login, recuperar senha
+│       ├── admin/                      # Paginas do perfil admin
+│       │   ├── dashboard/              # Dashboard com KPIs
+│       │   ├── registrations/          # Cadastros
+│       │   │   ├── channels/           # Canais
+│       │   │   ├── clients/            # Clientes
+│       │   │   ├── integrations/       # Integracoes
+│       │   │   ├── products/           # Produtos
+│       │   │   └── users/              # Usuarios
+│       │   ├── orders/                 # Pedidos
+│       │   ├── financial/              # Financeiro
+│       │   │   └── recharge-requests/  # Solicitacoes de recarga
+│       │   ├── access-control/         # Direito de acesso
+│       │   │   ├── groups/             # Grupos
+│       │   │   └── features/           # Funcionalidades
+│       │   └── profile/                # Perfil do admin
+│       ├── client/                     # Paginas do perfil cliente
+│       │   ├── dashboard/              # Dashboard do cliente
+│       │   ├── my-products/            # Meus produtos
+│       │   ├── orders/                 # Pedidos
+│       │   ├── financial/              # Financeiro
+│       │   ├── integrations/           # Integracoes
+│       │   └── placeholder/            # Placeholder para paginas em dev
+│       └── miscellaneous/              # 404 e afins
+│
+├── assets/
+│   ├── i18n/                           # Traducoes (pt-BR.json)
+│   └── images/                         # Imagens (logos, canais, login)
+│
+└── environments/                       # Configs por ambiente (dev/prod)
+```

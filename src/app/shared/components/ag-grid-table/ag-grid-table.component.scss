@@ -12,7 +12,7 @@
 // LARGURA DO GRID
 ag-grid-angular {
     width: 100%;
-    padding: 1rem;
+    padding: 0 1rem 1rem;
 }
 
 // COMPONENTES NEBULAR
@@ -20,17 +20,16 @@ nb-card {
     margin-bottom: 1rem;
 }
 
-// TOOLBAR LAYOUT
-.card-header-toolbar {
-    display: flex;
-    flex-direction: column;
+nb-card-header {
+    border-bottom: none;
 }
 
+// TOOLBAR LAYOUT
 .toolbar-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    margin-top: 8px;
+    padding: 1rem 1.5rem;
 }
 
 .toolbar-buttons button {

@@ -24,6 +24,7 @@ export class AgGridTableComponent implements OnInit {
     @Input() paginationPageSize: number = 10;
     @Input() localeText: any = {};
     @Input() formFields: FormFieldConfig[] = [];
+    @Input() showTitle: boolean = true;
 
     @Output() onAdd = new EventEmitter<any>();
     @Output() onEdit = new EventEmitter<{ original: any; updated: any }>();

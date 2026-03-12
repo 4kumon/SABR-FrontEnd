@@ -3,7 +3,7 @@
         <nb-card>
             <nb-card-header class="kpi-header">
                 <nb-icon *ngIf="card.icon" [icon]="card.icon"></nb-icon>
-                <span *ngIf="card.badge" class="integration-badge" [style.background-color]="card.badge.color">{{ card.badge.initial }}</span>
+                <img *ngIf="card.badge" class="integration-badge" [src]="card.badge.image" [alt]="card.title">
                 {{ card.title }}
             </nb-card-header>
             <nb-card-body>

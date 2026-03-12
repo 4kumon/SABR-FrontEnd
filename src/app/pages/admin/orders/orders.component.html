@@ -1,16 +1,72 @@
-<div class="pedidos-filter">
-    <nb-select [placeholder]="'common.filterByStatus' | translate" [selected]="statusFilter" (selectedChange)="onFilterChange($event)">
-        <nb-option value="todos">{{ 'common.all' | translate }}</nb-option>
-        <nb-option value="pago">{{ 'status.paidPlural' | translate }}</nb-option>
-        <nb-option value="cancelado">{{ 'status.cancelledPlural' | translate }}</nb-option>
-        <nb-option value="pendente">{{ 'status.pendingPlural' | translate }}</nb-option>
-    </nb-select>
-</div>
+<nb-card class="filters-card">
+  <nb-card-header>
+    <h5>{{ 'common.queryOrders' | translate }}</h5>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="filters-grid">
+      <div class="filter-field">
+        <label>{{ 'common.creationDateFrom' | translate }}</label>
+        <input nbInput fullWidth type="datetime-local" [(ngModel)]="filters.creationDateFrom">
+      </div>
+      <div class="filter-field">
+        <label>{{ 'common.creationDateTo' | translate }}</label>
+        <input nbInput fullWidth type="datetime-local" [(ngModel)]="filters.creationDateTo">
+      </div>
+      <div class="filter-field">
+        <label>{{ 'common.paidOrder' | translate }}</label>
+        <nb-select fullWidth [(selected)]="filters.status"
+                   [placeholder]="'common.all' | translate">
+          <nb-option value="">{{ 'common.all' | translate }}</nb-option>
+          <nb-option value="pago">{{ 'status.paidPlural' | translate }}</nb-option>
+          <nb-option value="cancelado">{{ 'status.cancelledPlural' | translate }}</nb-option>
+          <nb-option value="pendente">{{ 'status.pendingPlural' | translate }}</nb-option>
+        </nb-select>
+      </div>
+      <div class="filter-field">
+        <label>{{ 'columns.channel' | translate }}</label>
+        <nb-select fullWidth [(selected)]="filters.channel"
+                   [placeholder]="'common.selectChannel' | translate">
+          <nb-option [value]="''">{{ 'common.all' | translate }}</nb-option>
+          <nb-option *ngFor="let ch of channels" [value]="ch">{{ ch }}</nb-option>
+        </nb-select>
+      </div>
+      <div class="filter-field">
+        <label>{{ 'common.clientName' | translate }}</label>
+        <input nbInput fullWidth type="text" [(ngModel)]="filters.clientName"
+               [placeholder]="'common.clientName' | translate">
+      </div>
+      <div class="filter-field">
+        <label>{{ 'columns.orderNumber' | translate }}</label>
+        <input nbInput fullWidth type="text" [(ngModel)]="filters.orderNumber"
+               [placeholder]="'columns.orderNumber' | translate">
+      </div>
+      <div class="filter-field">
+        <label>{{ 'common.orderId' | translate }}</label>
+        <input nbInput fullWidth type="text" [(ngModel)]="filters.orderId"
+               [placeholder]="'common.orderId' | translate">
+      </div>
+      <div class="filter-field">
+        <label>{{ 'common.userId' | translate }}</label>
+        <input nbInput fullWidth type="text" [(ngModel)]="filters.userId"
+               [placeholder]="'common.userId' | translate">
+      </div>
+    </div>
+    <div class="filter-actions">
+      <button nbButton status="primary" size="small" (click)="applyFilter()">
+        <nb-icon icon="search-outline"></nb-icon> {{ 'common.search' | translate }}
+      </button>
+      <button nbButton status="basic" size="small" (click)="clearFilters()">
+        <nb-icon icon="close-outline"></nb-icon> {{ 'common.clear' | translate }}
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>
 
 <app-ag-grid-table
   [columnDefs]="columnDefs"
   [rowData]="rowData"
   [title]="'menu.admin.orders' | translate"
+  [showTitle]="true"
   [pagination]="true"
   [paginationPageSize]="10"
   [localeText]="localeText"

@@ -8,7 +8,7 @@ interface KpiCard {
     title: string;
     value: string;
     icon?: string;
-    badge?: { initial: string; color: string };
+    badge?: { image: string };
     link?: string;
     danger?: boolean;
     chart?: boolean;
@@ -35,10 +35,10 @@ export class AdminDashboardComponent {
             { title: this.t.get('dashboard.admin.userCount'), value: '14.396', icon: 'people-outline', link: this.t.get('common.view') },
             { title: this.t.get('dashboard.admin.productCount'), value: '1.093.609', icon: 'cube-outline', link: this.t.get('common.view') },
             { title: this.t.get('dashboard.admin.totalOrders15d'), value: 'R$ 965.977,20', icon: 'pricetags-outline' },
-            { title: this.t.get('dashboard.admin.integrationsShopee'), value: '9.555', badge: { initial: 'S', color: '#EE4D2D' } },
-            { title: this.t.get('dashboard.admin.integrationsMercadoLivre'), value: '1.937', badge: { initial: 'M', color: '#FFE600' } },
-            { title: this.t.get('dashboard.admin.integrationsShopify'), value: '1.050', badge: { initial: 'S', color: '#96BF48' } },
-            { title: this.t.get('dashboard.admin.integrationsLojaIntegrada'), value: '0', badge: { initial: 'L', color: '#00B4AB' } },
+            { title: this.t.get('dashboard.admin.integrationsShopee'), value: '9.555', badge: { image: 'assets/images/canais/shopee.png' } },
+            { title: this.t.get('dashboard.admin.integrationsMercadoLivre'), value: '1.937', badge: { image: 'assets/images/canais/mercadolivre.png' } },
+            { title: this.t.get('dashboard.admin.integrationsShopify'), value: '1.050', badge: { image: 'assets/images/canais/shopify.png' } },
+            { title: this.t.get('dashboard.admin.integrationsLojaIntegrada'), value: '0', badge: { image: 'assets/images/canais/lojaintegrada.png' } },
             { title: this.t.get('dashboard.admin.sales15d'), value: '', icon: 'trending-up-outline', chart: true },
             { title: this.t.get('dashboard.admin.salesByChannel15d'), value: '', icon: 'pie-chart-outline', chart: true },
         ];

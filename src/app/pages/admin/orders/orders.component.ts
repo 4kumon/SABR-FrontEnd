@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ColDef } from 'ag-grid-community';
-import { NbCardModule, NbSelectModule } from '@nebular/theme';
+import { NbCardModule, NbSelectModule, NbInputModule, NbIconModule, NbButtonModule } from '@nebular/theme';
 import { AgGridTableComponent } from '../../../shared/components/ag-grid-table/ag-grid-table.component';
 import { AgGridMockDataService } from '../../../@core/mock/ag-grid-mock-data.service';
 import { NotificationService } from '../../../@core/services/notification.service';
@@ -14,12 +14,27 @@ import { FormFieldConfig } from '../../../@core/models/form-field.models';
 @Component({
     selector: 'ngx-orders',
     standalone: true,
-    imports: [CommonModule, FormsModule, NbCardModule, NbSelectModule, AgGridTableComponent, TranslatePipe],
+    imports: [
+        CommonModule, FormsModule,
+        NbCardModule, NbSelectModule, NbInputModule, NbIconModule, NbButtonModule,
+        AgGridTableComponent, TranslatePipe,
+    ],
     templateUrl: './orders.component.html',
+    styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-    statusFilter: string = 'todos';
+    filters = {
+        creationDateFrom: '',
+        creationDateTo: '',
+        status: '',
+        channel: '',
+        clientName: '',
+        orderNumber: '',
+        orderId: '',
+        userId: '',
+    };
 
+    channels: string[] = [];
     columnDefs: ColDef[] = [];
     formFields: FormFieldConfig[] = [];
     allPedidos: Pedido[] = [];
@@ -80,20 +95,53 @@ export class OrdersComponent implements OnInit {
 
     loadData(): void {
         this.allPedidos = this.mockDataService.getPedidosData();
-        this.applyFilter();
-    }
-
-    onFilterChange(value: string): void {
-        this.statusFilter = value;
+        this.channels = [...new Set(this.allPedidos.map(p => p.channel))].sort();
         this.applyFilter();
     }
 
     applyFilter(): void {
-        if (this.statusFilter === 'todos') {
-            this.rowData = [...this.allPedidos];
-        } else {
-            this.rowData = this.allPedidos.filter(p => p.status === this.statusFilter);
+        let data = [...this.allPedidos];
+
+        if (this.filters.orderNumber) {
+            const term = this.filters.orderNumber.toLowerCase();
+            data = data.filter(p => p.order_number.toLowerCase().includes(term));
         }
+        if (this.filters.clientName) {
+            const term = this.filters.clientName.toLowerCase();
+            data = data.filter(p => p.client_name.toLowerCase().includes(term));
+        }
+        if (this.filters.orderId) {
+            const term = this.filters.orderId;
+            data = data.filter(p => String(p.id).includes(term));
+        }
+        if (this.filters.channel) {
+            data = data.filter(p => p.channel === this.filters.channel);
+        }
+        if (this.filters.status) {
+            data = data.filter(p => p.status === this.filters.status);
+        }
+        if (this.filters.creationDateFrom) {
+            data = data.filter(p => p.created_at >= this.filters.creationDateFrom);
+        }
+        if (this.filters.creationDateTo) {
+            data = data.filter(p => p.created_at <= this.filters.creationDateTo);
+        }
+
+        this.rowData = data;
+    }
+
+    clearFilters(): void {
+        this.filters = {
+            creationDateFrom: '',
+            creationDateTo: '',
+            status: '',
+            channel: '',
+            clientName: '',
+            orderNumber: '',
+            orderId: '',
+            userId: '',
+        };
+        this.applyFilter();
     }
 
     onAddNew(data: any): void {
