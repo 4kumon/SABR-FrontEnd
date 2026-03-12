@@ -42,6 +42,16 @@ export interface Integracao {
   deleted_by?: string;
 }
 
+export interface Pedido {
+  id: number;
+  order_number: string;
+  client_name: string;
+  channel: string;
+  status: 'pago' | 'cancelado' | 'pendente';
+  total: number;
+  created_at: string;
+}
+
 export interface Usuario {
   id: number;
   name: string;

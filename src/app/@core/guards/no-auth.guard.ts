@@ -12,8 +12,11 @@ export class NoAuthGuard implements CanActivate {
 
     canActivate(): boolean | UrlTree {
         if (this.authService.isAuthenticated()) {
-            // Já autenticado → redirecionar para dashboard
-            return this.router.createUrlTree(['/pages/dashboard']);
+            const user = this.authService.getCurrentUser();
+            const redirect = user?.profile === 'interno'
+                ? '/pages/admin/dashboard'
+                : '/pages/client/dashboard';
+            return this.router.createUrlTree([redirect]);
         }
         return true;
     }

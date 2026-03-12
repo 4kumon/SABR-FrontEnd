@@ -39,8 +39,12 @@ export class SabrAuthStrategy extends NbAuthStrategy {
         const delayMs = this.getOption('delay') || 800;
 
         if (result.success) {
+            const user = this.authService.getCurrentUser();
+            const redirect = user?.profile === 'interno'
+                ? '/pages/admin/dashboard'
+                : '/pages/client/dashboard';
             return of(new NbAuthResult(
-                true, null, '/pages/dashboard', [], ['Login realizado com sucesso!'],
+                true, null, redirect, [], ['Login realizado com sucesso!'],
             )).pipe(delay(delayMs));
         }
 

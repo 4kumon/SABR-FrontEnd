@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-
-import { MENU_ITEMS } from './pages-menu';
+import { Component, OnInit } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
+import { MenuService } from '../@core/services/menu.service';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,7 +12,13 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit {
 
-  menu = MENU_ITEMS;
+  menu: NbMenuItem[] = [];
+
+  constructor(private menuService: MenuService) {}
+
+  ngOnInit(): void {
+    this.menu = this.menuService.getMenuItems();
+  }
 }

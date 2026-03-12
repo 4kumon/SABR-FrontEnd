@@ -13,7 +13,6 @@ import {
   SeoService,
   StateService,
 } from './utils';
-import { UserData } from './data/users';
 import { ElectricityData } from './data/electricity';
 import { UserActivityData } from './data/user-activity';
 import { OrdersChartData } from './data/orders-chart';
@@ -32,7 +31,6 @@ import { StatsProgressBarData } from './data/stats-progress-bar';
 import { VisitorsAnalyticsData } from './data/visitors-analytics';
 import { SecurityCamerasData } from './data/security-cameras';
 
-import { UserService } from './mock/users.service';
 import { ElectricityService } from './mock/electricity.service';
 import { UserActivityService } from './mock/user-activity.service';
 import { OrdersChartService } from './mock/orders-chart.service';
@@ -53,7 +51,6 @@ import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
 const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
   { provide: ElectricityData, useClass: ElectricityService },
   { provide: UserActivityData, useClass: UserActivityService },
   { provide: OrdersChartData, useClass: OrdersChartService },

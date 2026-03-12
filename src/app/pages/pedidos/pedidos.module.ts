@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IntegradoComponent } from './integrado/integrado.component';
+import { PedidosComponent } from './pedidos.component';
 
 const routes: Routes = [
-    { path: 'integrado', component: IntegradoComponent },
-    { path: '', redirectTo: 'integrado', pathMatch: 'full' },
+    { path: '', component: PedidosComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(routes), PedidosComponent],
 })
 export class PedidosModule {}

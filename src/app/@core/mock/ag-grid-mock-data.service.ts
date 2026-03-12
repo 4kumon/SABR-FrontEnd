@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Canal, Cliente, Integracao, Usuario, Produto } from '../models/ag-grid.models';
+import { Canal, Cliente, Integracao, Usuario, Produto, Pedido } from '../models/ag-grid.models';
 
 @Injectable({ providedIn: 'root' })
 export class AgGridMockDataService {
@@ -8,11 +8,13 @@ export class AgGridMockDataService {
     private integracoesStorageKey = 'sabr_integracoes_data';
     private usuariosStorageKey = 'sabr_usuarios_data';
     private produtosStorageKey = 'sabr_produtos_data';
+    private pedidosStorageKey = 'sabr_pedidos_data';
     private canais: Canal[] = [];
     private clientes: Cliente[] = [];
     private integracoes: Integracao[] = [];
     private usuarios: Usuario[] = [];
     private produtos: Produto[] = [];
+    private pedidos: Pedido[] = [];
 
 
     constructor() {
@@ -21,6 +23,7 @@ export class AgGridMockDataService {
         this.loadIntegracoesData();
         this.loadUsuariosData();
         this.loadProdutosData();
+        this.loadPedidosData();
     }
 
     // ========== CANAIS ==========
@@ -399,5 +402,60 @@ export class AgGridMockDataService {
 
     private saveProdutosData(): void {
         localStorage.setItem(this.produtosStorageKey, JSON.stringify(this.produtos));
+    }
+
+    // ========== PEDIDOS ==========
+    getPedidosData(): Pedido[] {
+        return [...this.pedidos];
+    }
+
+    addPedido(record: Omit<Pedido, 'id' | 'created_at'>): void {
+        const newId = this.pedidos.length > 0 ? Math.max(...this.pedidos.map(p => p.id)) + 1 : 1;
+        const newPedido: Pedido = { ...record, id: newId, created_at: new Date().toISOString() };
+        this.pedidos.push(newPedido);
+        this.savePedidosData();
+    }
+
+    updatePedido(id: number, record: Partial<Pedido>): void {
+        const index = this.pedidos.findIndex(p => p.id === id);
+        if (index !== -1) {
+            this.pedidos[index] = { ...this.pedidos[index], ...record, id };
+            this.savePedidosData();
+        }
+    }
+
+    deletePedido(id: number): void {
+        this.pedidos = this.pedidos.filter(p => p.id !== id);
+        this.savePedidosData();
+    }
+
+    private loadPedidosData(): void {
+        const stored = localStorage.getItem(this.pedidosStorageKey);
+        if (stored) {
+            this.pedidos = JSON.parse(stored);
+        } else {
+            this.pedidos = [
+                { id: 1, order_number: 'PED-001', client_name: 'Mark Otto', channel: 'Shopee', status: 'pago', total: 149.90, created_at: '2025-03-01 10:15:00' },
+                { id: 2, order_number: 'PED-002', client_name: 'Ana Silva', channel: 'Mercado Livre', status: 'pago', total: 259.80, created_at: '2025-03-01 14:30:00' },
+                { id: 3, order_number: 'PED-003', client_name: 'Gabriel Souza', channel: 'Shopify', status: 'cancelado', total: 89.90, created_at: '2025-03-02 08:45:00' },
+                { id: 4, order_number: 'PED-004', client_name: 'Helena Martins', channel: 'Shopee', status: 'pendente', total: 499.70, created_at: '2025-03-02 11:00:00' },
+                { id: 5, order_number: 'PED-005', client_name: 'Pedro Carvalho', channel: 'Nuvemshop', status: 'pago', total: 199.90, created_at: '2025-03-03 09:20:00' },
+                { id: 6, order_number: 'PED-006', client_name: 'Igor Pereira', channel: 'Mercado Livre', status: 'cancelado', total: 329.70, created_at: '2025-03-03 16:10:00' },
+                { id: 7, order_number: 'PED-007', client_name: 'Mark Otto', channel: 'Shopee', status: 'pago', total: 79.90, created_at: '2025-03-04 10:00:00' },
+                { id: 8, order_number: 'PED-008', client_name: 'Ana Silva', channel: 'Bling V3', status: 'pendente', total: 649.50, created_at: '2025-03-04 13:45:00' },
+                { id: 9, order_number: 'PED-009', client_name: 'Gabriel Souza', channel: 'Yampi', status: 'pago', total: 159.90, created_at: '2025-03-05 08:30:00' },
+                { id: 10, order_number: 'PED-010', client_name: 'Helena Martins', channel: 'Shopee', status: 'pago', total: 289.80, created_at: '2025-03-05 15:20:00' },
+                { id: 11, order_number: 'PED-011', client_name: 'Pedro Carvalho', channel: 'Mercado Livre', status: 'cancelado', total: 119.90, created_at: '2025-03-06 09:00:00' },
+                { id: 12, order_number: 'PED-012', client_name: 'Igor Pereira', channel: 'Shopify', status: 'pendente', total: 399.90, created_at: '2025-03-06 14:15:00' },
+                { id: 13, order_number: 'PED-013', client_name: 'Mark Otto', channel: 'Loja Integrada', status: 'pago', total: 549.70, created_at: '2025-03-07 10:30:00' },
+                { id: 14, order_number: 'PED-014', client_name: 'Ana Silva', channel: 'Shopee', status: 'pago', total: 89.90, created_at: '2025-03-07 16:45:00' },
+                { id: 15, order_number: 'PED-015', client_name: 'Gabriel Souza', channel: 'Nuvemshop', status: 'pendente', total: 229.80, created_at: '2025-03-08 08:00:00' },
+            ];
+            this.savePedidosData();
+        }
+    }
+
+    private savePedidosData(): void {
+        localStorage.setItem(this.pedidosStorageKey, JSON.stringify(this.pedidos));
     }
 }

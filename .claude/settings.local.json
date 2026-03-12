@@ -6,7 +6,15 @@
       "Bash(npm install)",
       "Bash(npm install --legacy-peer-deps)",
       "Bash(rm -rf .angular/cache)",
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/menu)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/admin/admin-dashboard)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/cliente-dashboard)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/meus-produtos)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/placeholder)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/financeiro)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/pedidos)",
+      "Bash(mkdir -p C:/Users/3Cliques-0027/source/SABR-FrontEnd/src/app/pages/cliente/integracoes)"
     ]
   }
 }
